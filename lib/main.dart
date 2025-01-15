@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/screens/todo_app_home_screen.dart';
+import 'package:todo_app/screens/new_home_screen.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
@@ -23,7 +23,7 @@ class TodoApp extends StatelessWidget {
               backgroundColor: Colors.blue,
               selectedItemColor: Colors.white,
               unselectedItemColor: Colors.grey)),
-      home: const TodoAppHomeScreen(),
+      home: const NewHomeScreen(),
     );
   }
 }

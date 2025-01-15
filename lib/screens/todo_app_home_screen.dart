@@ -9,39 +9,45 @@ class TodoAppHomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final dataItems = ref.watch(itemProvider);
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showNameDialog(context, ref);
-        },
-        child: const Text('+'),
-      ),
-      body: dataItems.isEmpty
-          ? const Center(
-              child: Text('No items added yet!!'),
-            )
-          : ListView.builder(
-              itemCount: dataItems.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0, vertical: 4),
-                      child: ListTile(
-                        trailing: IconButton(
-                            onPressed: () {}, icon: const Icon(Icons.delete)),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        tileColor: Colors.black38,
-                        title: Text(dataItems[index].name),
-                        subtitle: Text("${(dataItems[index].id)}"),
+    return SafeArea(
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            showNameDialog(context, ref);
+          },
+          child: const Text('+'),
+        ),
+        body: dataItems.isEmpty
+            ? const Center(
+                child: Text('No items added yet!!'),
+              )
+            : ListView.builder(
+                itemCount: dataItems.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 12.0, vertical: 4),
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.blueGrey,
+                            child: Image.asset(''),
+                          ),
+                          trailing: IconButton(
+                              onPressed: () {}, icon: const Icon(Icons.delete)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          tileColor: Colors.black38,
+                          title: Text(dataItems[index].name),
+                          subtitle: Text("${(dataItems[index].id)}"),
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              }),
+                    ],
+                  );
+                }),
+      ),
     );
   }
 }
