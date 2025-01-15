@@ -12,8 +12,8 @@ class ItemNotifier extends StateNotifier<List<Items>> {
   ItemNotifier() : super([]);
 
   //add item to the list
-  void addItem(String itemName) {
-    final item = Items(id: DateTime.now().toString(), name: itemName);
+  void addItem(String itemName, int itemId) {
+    final item = Items(id: itemId, name: itemName);
     state.add(item);
     state = state.toList();
     
