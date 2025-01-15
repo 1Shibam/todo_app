@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/providers/item_provider.dart';
+import 'package:todo_app/oldLibFolders(not%20using%20them)/providers/item_provider.dart';
 
 final itemNameProvider = StateProvider<String>((ref) => '');
 final itemIDProvider = StateProvider<int>((ref) => 0);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/methods/show_name_dialog.dart';
-import 'package:todo_app/providers/item_provider.dart';
+import 'package:todo_app/oldLibFolders(not%20using%20them)/methods/show_name_dialog.dart';
+import 'package:todo_app/oldLibFolders(not%20using%20them)/providers/item_provider.dart';
 
 class TodoAppHomeScreen extends ConsumerWidget {
   const TodoAppHomeScreen({super.key});

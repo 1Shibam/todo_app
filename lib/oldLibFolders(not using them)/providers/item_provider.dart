@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/models/items.dart';
+import 'package:todo_app/oldLibFolders(not%20using%20them)/models/items.dart';
 
 final itemProvider = StateNotifierProvider<ItemNotifier, List<Items>>((ref) {
   return ItemNotifier();

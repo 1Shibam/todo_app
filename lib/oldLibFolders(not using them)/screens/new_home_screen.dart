@@ -32,7 +32,6 @@ class NewHomeScreen extends StatelessWidget {
           elevation: 0,
           shadowColor: Colors.transparent,
           backgroundColor: Colors.white,
-          
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -56,6 +55,13 @@ class NewHomeScreen extends StatelessWidget {
               ),
             ),
           ],
+        ),
+        body: const SingleChildScrollView(
+          child: Padding(padding: EdgeInsets.symmetric(horizontal: 30), child: Column(
+            children: [
+              
+            ],
+          ),),
         ),
       ),
     );
