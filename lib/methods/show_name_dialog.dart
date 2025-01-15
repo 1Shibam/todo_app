@@ -6,9 +6,9 @@ import 'package:todo_app/providers/item_provider.dart';
 final itemNameProvider = StateProvider<String>((ref) => '');
 final itemIDProvider = StateProvider<int>((ref) => 0);
 final nameTextController =
-    Provider<TextEditingController>((ref) => TextEditingController());
+    AutoDisposeProvider<TextEditingController>((ref) => TextEditingController());
 final idTextController =
-    Provider<TextEditingController>((ref) => TextEditingController());
+    AutoDisposeProvider<TextEditingController>((ref) => TextEditingController());
 
 void showNameDialog(BuildContext context, WidgetRef ref) {
   final nameController = ref.watch(nameTextController);
