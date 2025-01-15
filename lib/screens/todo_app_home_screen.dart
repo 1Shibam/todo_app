@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/providers/item_provider.dart';
 
+
+
 class TodoAppHomeScreen extends ConsumerWidget {
   const TodoAppHomeScreen({super.key});
 
@@ -11,22 +13,24 @@ class TodoAppHomeScreen extends ConsumerWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ref.read(itemProvider.notifier).addItem('newItem');
+          ref.read(itemProvider.notifier).addItem('nigga');
         },
         child: const Text('+'),
       ),
-      body: ListView.builder(
-        
-        itemCount: dataItems.length,
-        itemBuilder: (context, index) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ListTile(title: Text(dataItems[index].name)),
-            ],
-          );
-        },
-      ),
+      body: dataItems.isEmpty
+          ? const Center(
+              child: Text('No items added yet!!'),
+            )
+          : ListView.builder(
+              itemCount: dataItems.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ListTile(title: Text('${dataItems[index].name}-$index')),
+                  ],
+                );
+              }),
     );
   }
 }
