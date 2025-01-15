@@ -8,14 +8,11 @@ class TodoAppHomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    // final itemName = ref.watch(itemNameProvider);
-    // final itemID = ref.watch(itemIDProvider);
     final dataItems = ref.watch(itemProvider);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showNameDialog(context, ref);
-          
         },
         child: const Text('+'),
       ),
@@ -29,8 +26,19 @@ class TodoAppHomeScreen extends ConsumerWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    ListTile(title: Text(dataItems[index].name),
-                    subtitle: Text("${(dataItems[index].id)}"),),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0, vertical: 4),
+                      child: ListTile(
+                        trailing: IconButton(
+                            onPressed: () {}, icon: const Icon(Icons.delete)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        tileColor: Colors.black38,
+                        title: Text(dataItems[index].name),
+                        subtitle: Text("${(dataItems[index].id)}"),
+                      ),
+                    ),
                   ],
                 );
               }),

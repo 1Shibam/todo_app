@@ -14,7 +14,15 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.blue, centerTitle: false),
+          useMaterial3: true,
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+              backgroundColor: Colors.blue,
+              selectedItemColor: Colors.white,
+              unselectedItemColor: Colors.grey)),
       home: const TodoAppHomeScreen(),
     );
   }
