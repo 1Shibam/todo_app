@@ -5,8 +5,13 @@ class TodoHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('Hello world!!'),),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.amber,
+      ),
+      body: const Center(
+        child: Text('Hello world!!'),
+      ),
     );
   }
 }
