@@ -4,7 +4,7 @@ import 'package:todo_app/themes/fonts.dart';
 class AppTextStyles {
   // Normal font style
   static TextStyle normal({
-    double fontSize = 14.0,
+    double fontSize = 20.0,
     Color color = Colors.black,
   }) {
     return TextStyle(
@@ -17,7 +17,7 @@ class AppTextStyles {
 
   // Bold font style
   static TextStyle bold({
-    double fontSize = 16.0,
+    double fontSize = 24.0,
     Color color = Colors.black,
   }) {
     return TextStyle(
