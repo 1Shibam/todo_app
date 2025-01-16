@@ -3,6 +3,7 @@
 
 import 'package:equatable/equatable.dart';
 class TaskDataModel extends Equatable {
+  final String id;
   final String title;
   bool? isDone;
   bool? isDeleted;

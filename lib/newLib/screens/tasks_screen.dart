@@ -49,13 +49,21 @@ class TasksScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final task = tasks[index];
                     return ListTile(
-                      trailing: Checkbox(
-                        value: task.isDone,
-                        onChanged: (value) {
-                          ref
-                              .read(taskListProvider.notifier)
-                              .toggleTaskStatus(task.title);
-                        },
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Checkbox(
+                            value: task.isDone,
+                            onChanged: (value) {
+                              ref
+                                  .read(taskListProvider.notifier)
+                                  .toggleTaskStatus(task.title);
+                            },
+                          ),
+                          IconButton(onPressed: (){
+                            ref.read(taskListProvider.notifier).deleteTask(task.title);
+                          }, icon: const Icon(Icons.delete))
+                        ],
                       ),
                       title: Text(
                         task.title,
