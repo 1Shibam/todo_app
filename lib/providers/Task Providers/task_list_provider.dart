@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/newLib/models/task_data_model.dart';
+import 'package:todo_app/models/task_data_model.dart';
 
 class TaskListNotifier extends StateNotifier<List<TaskDataModel>> {
   TaskListNotifier() : super([]);
