@@ -5,5 +5,18 @@ import 'package:todo_app/newLib/screens/tasks_screen.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
-  runApp(const ProviderScope(child: TasksScreen()));
+  runApp(const ProviderScope(child: TodoApp()));
+}
+
+class TodoApp extends StatelessWidget {
+  const TodoApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Todo App',
+      theme: ThemeData(),
+      home: const TasksScreen(),
+    );
+  }
 }
