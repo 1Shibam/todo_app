@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/providers/Task%20Providers/task_list_provider.dart';
+import 'package:todo_app/providers/task%20providers/task_list_provider.dart';
 import 'package:todo_app/widgets/app%20widgets/app_text_styles.dart';
 
 class TaskListWidget extends StatelessWidget {
