@@ -1,8 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+//task data model class
+// ignore_for_file: must_be_immutable
 
-
-
-class TaskDataModel {
+import 'package:equatable/equatable.dart';
+class TaskDataModel extends Equatable {
   final String title;
   bool? isDone;
   bool? isDeleted;
@@ -37,9 +37,14 @@ class TaskDataModel {
 
   factory TaskDataModel.fromMap(Map<String, dynamic> map) {
     return TaskDataModel(
-      title: map['title'] as String,
-      isDone: map['isDone'] != null ? map['isDone'] as bool : null,
-      isDeleted: map['isDeleted'] != null ? map['isDeleted'] as bool : null,
+      title: map['title'] ?? '',
+      isDone: map['isDone'] ?? false,
+      isDeleted: map['isDeleted'] ?? false,
     );
   }
+
+  @override
+  List<Object?> get props => [
+    title, isDone, isDeleted
+  ];
 }
