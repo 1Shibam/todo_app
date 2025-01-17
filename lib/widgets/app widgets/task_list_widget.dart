@@ -13,7 +13,19 @@ class TaskListWidget extends StatelessWidget {
     return Consumer(
       builder: (context, ref, child) {
         final tasks = ref.watch(taskListProvider);
-        return Column(
+        if (tasks.isEmpty) {
+          return Center(child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/empty file.png'),
+              Text('There is no tasks yet!!', style: AppTextStyles.normal(),)
+            ],
+
+          ),);
+        }
+        else {
+          return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Expanded(
@@ -33,9 +45,13 @@ class TaskListWidget extends StatelessWidget {
                                 .toggleTaskStatus(task.title);
                           },
                         ),
-                        IconButton(onPressed: (){
-                          ref.read(taskListProvider.notifier).deleteTask(task.title);
-                        }, icon: const Icon(Icons.delete))
+                        IconButton(
+                            onPressed: () {
+                              ref
+                                  .read(taskListProvider.notifier)
+                                  .deleteTask(task.title);
+                            },
+                            icon: const Icon(Icons.delete))
                       ],
                     ),
                     title: Text(
@@ -48,6 +64,7 @@ class TaskListWidget extends StatelessWidget {
             ),
           ],
         );
+        }
       },
     );
   }
