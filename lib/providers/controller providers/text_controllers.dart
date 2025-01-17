@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/providers/provider_exports.dart';
 //text editing controllers for multiple usage
 
-final firstTextController = AutoDisposeProvider((ref) {
+final firstTextController = AutoDisposeStateProvider((ref) {
   final controller = TextEditingController();
   return controller;
 });
-final secondTextController = AutoDisposeProvider((ref) {
+final secondTextController = AutoDisposeStateProvider((ref) {
   final controller = TextEditingController();
-  return controller;
+  return controller.text;
 });
-final thirdTextController = AutoDisposeProvider((ref) {
+final thirdTextController = AutoDisposeStateProvider((ref) {
   final controller = TextEditingController();
-  return controller;
+  return controller.text;
 });
-final fourthTextController = AutoDisposeProvider((ref) {
+final fourthTextController = AutoDisposeStateProvider((ref) {
   final controller = TextEditingController();
-  return controller;
+  return controller.text;
 });
