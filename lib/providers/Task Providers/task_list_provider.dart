@@ -41,7 +41,8 @@ class TaskListNotifier extends StateNotifier<List<TaskDataModel>> {
 }
 
 // Create the TaskListProvider
-final taskListProvider = StateNotifierProvider<TaskListNotifier, List<TaskDataModel>>(
+final taskListProvider =
+    StateNotifierProvider<TaskListNotifier, List<TaskDataModel>>(
   (ref) => TaskListNotifier(),
 );
 
