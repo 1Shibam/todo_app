@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:todo_app/models/quote_data_model.dart';
+import 'package:todo_app/models/data%20moodels/quote_data_model.dart';
 import 'package:todo_app/providers/provider_exports.dart';
 
 // String finalQuote = '';
