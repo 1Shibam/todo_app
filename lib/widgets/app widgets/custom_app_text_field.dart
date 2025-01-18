@@ -3,8 +3,8 @@ import 'package:todo_app/widgets/widgets_export.dart';
 
 class CustomTextField extends StatelessWidget {
   final String label; // Label for the TextField
-  final TextEditingController?
-      controller; // Optional controller for managing input
+  final TextEditingController? controller; // Optional controller
+  final FocusNode? focusNode;
   final TextInputType keyboardType; // Input type (e.g., text, number)
   final bool obscureText; // For password fields, default is false
   final String hintText;
@@ -13,6 +13,7 @@ class CustomTextField extends StatelessWidget {
       {super.key,
       this.label = 'textField', // Default label if not provided
       this.controller,
+      this.focusNode,
       this.keyboardType = TextInputType.text,
       this.obscureText = false,
       this.hintText = 'label'});
@@ -21,6 +22,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      focusNode: focusNode,
       keyboardType: keyboardType,
       obscureText: obscureText,
       decoration: InputDecoration(

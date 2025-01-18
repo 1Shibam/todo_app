@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/data%20moodels/task_data_model.dart';
 import 'package:todo_app/providers/provider_exports.dart';
-import 'package:todo_app/widgets/app%20widgets/app_text_styles.dart';
+import 'package:todo_app/widgets/app%20widgets/custom_app_text_field.dart';
 
 class CreateTaskDetailsWidget extends ConsumerWidget {
   const CreateTaskDetailsWidget({super.key});
@@ -12,20 +12,12 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
 
     return AlertDialog(
       title: const Text('Enter Your Input'),
-      content: TextField(
-        onSubmitted: (value) {
-          //same functionality as the sumit button
-          ref.read(firstTextController.notifier).state = taskNameController;
-          final newTask = TaskDataModel(title: taskNameController.text);
-          ref.read(taskListProvider.notifier).addTask(newTask);
-          Navigator.pop(context);
-        },
-        autofocus: true,
-        controller: taskNameController,
-        decoration:  InputDecoration(
-          hintText: 'Title of tast',
-          hintStyle: AppTextStyles.normal()
-        ),
+      content: const Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CustomTextField()
+        ],
       ),
       actions: [
         TextButton(
