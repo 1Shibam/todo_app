@@ -12,9 +12,22 @@ class TodaysQuote extends ConsumerWidget {
     return quoteToday.when(
         data: (quote) {
           return Container(
-            decoration: BoxDecoration(color: Colors.lightBlue.withOpacity(0.3)),
-            child: Text(quote, style: AppTextStyles.normal()),
-          );
+              margin: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                  color: Colors.lightBlue.withOpacity(0.18),
+                  borderRadius: BorderRadius.circular(32)
+                      .copyWith(topLeft: const Radius.circular(0))),
+              child: ListTile(
+                title: Text(
+                  'Today\'s advice',
+                  style:
+                      AppTextStyles.normal(fontSize: 16, color: Colors.black),
+                ),
+                subtitle: Text(
+                  quote,
+                  style: AppTextStyles.bold(),
+                ),
+              ));
         },
         error: (error, stackTrace) {
           return Text(
