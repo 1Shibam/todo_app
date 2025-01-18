@@ -11,7 +11,7 @@ class AppTextStyles {
       fontFamily: font,
       fontSize: fontSize,
       color: color,
-      fontWeight: FontWeight.normal,
+      fontWeight: FontWeight.bold,
     );
   }
 
