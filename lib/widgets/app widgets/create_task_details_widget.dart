@@ -12,6 +12,16 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
     return AlertDialog(
       title: const Text('Enter Your Input'),
       content: TextField(
+        onSubmitted: (value) {
+
+          //same functionality as the sumit button
+          ref.read(firstTextController.notifier).state = taskNameController;
+          final newTask = TaskDataModel(title: taskNameController.text);
+          ref.read(taskListProvider.notifier).addTask(newTask);
+
+          Navigator.pop(context);
+        },
+        autofocus: true,
         controller: taskNameController,
         decoration: const InputDecoration(
           hintText: 'Type something...',
@@ -28,7 +38,7 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
           onPressed: () {
             // Save input to the state
             ref.read(firstTextController.notifier).state = taskNameController;
-            final newTask = TaskDataModel(title: taskNameController.text );
+            final newTask = TaskDataModel(title: taskNameController.text);
             ref.read(taskListProvider.notifier).addTask(newTask);
 
             Navigator.pop(context); // Close the dialog
