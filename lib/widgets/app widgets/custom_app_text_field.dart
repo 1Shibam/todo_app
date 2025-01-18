@@ -27,9 +27,9 @@ class CustomTextField extends StatelessWidget {
       obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: AppTextStyles.normal(),
+        hintStyle: AppTextStyles.normal(color: Colors.grey),
         labelText: label,
-        labelStyle: AppTextStyles.normal(fontSize: 12),
+        labelStyle: AppTextStyles.normal(fontSize: 12, color: Colors.grey),
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.grey, // Border color when not focused

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/models/data%20moodels/task_data_model.dart';
+import 'package:todo_app/models/models_exports.dart';
 import 'package:todo_app/providers/provider_exports.dart';
-import 'package:todo_app/widgets/app%20widgets/custom_app_text_field.dart';
+import '../widgets_export.dart';
 
 class CreateTaskDetailsWidget extends ConsumerWidget {
   const CreateTaskDetailsWidget({super.key});
@@ -16,7 +16,12 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomTextField()
+          CustomTextField(),
+          CustomTextField(),
+          CustomTextField(),
+          CustomTextField(),
+          CustomTextField(),
+          CustomTextField(),
         ],
       ),
       actions: [
@@ -24,7 +29,10 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
           onPressed: () {
             Navigator.pop(context); // Close the dialog without saving
           },
-          child: const Text('Cancel'),
+          child: Text(
+            'Cancel',
+            style: AppTextStyles.normal(color: Colors.black, fontSize: 12),
+          ),
         ),
         ElevatedButton(
           onPressed: () {
@@ -35,7 +43,10 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
 
             Navigator.pop(context); // Close the dialog
           },
-          child: const Text('Submit'),
+          child: Text(
+            'Submit',
+            style: AppTextStyles.normal(color: Colors.black, fontSize: 12),
+          ),
         ),
       ],
     );
