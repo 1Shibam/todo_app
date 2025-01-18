@@ -13,9 +13,9 @@ class TasksScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     //defining padding and font size
-
     final double padding = screenWidth * 0.02;
-    final double titleFontSize = screenWidth * 0.08;
+    final double titleFontSize = screenHeight * 0.04;
+    
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
