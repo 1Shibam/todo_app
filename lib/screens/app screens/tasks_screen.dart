@@ -13,9 +13,9 @@ class TasksScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     //defining padding and font size
-    final double padding = screenWidth * 0.02;
+    final double padding = screenWidth * 0.034;
     final double titleFontSize = screenHeight * 0.04;
-    
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -27,11 +27,21 @@ class TasksScreen extends StatelessWidget {
       floatingActionButton: const FloatingActionButtonWidget(),
       body: Padding(
         padding: EdgeInsets.all(padding),
-        child: const Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            TodaysQuote(),
-            Expanded(child: TaskListWidget()),
+            const TodaysQuote(),
+            const SizedBox(
+              height: 12,
+            ),
+            Text(
+              'Your task will Appear below - ',
+              style: AppTextStyles.bold(),
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            const TaskListWidget(),
           ],
         ),
       ),
