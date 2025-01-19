@@ -11,17 +11,28 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
     final taskNameController = ref.watch(firstTextController);
 
     return AlertDialog(
-      title: const Text('Enter Your Input'),
-      content: const Column(
+      title: Text(
+        'Enter Your Input',
+        style: AppTextStyles.bold(),
+      ),
+      content: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          CustomTextField(),
-          CustomTextField(),
-          CustomTextField(),
-          CustomTextField(),
-          CustomTextField(),
-          CustomTextField(),
+          TextField(
+            style: AppTextStyles.normal(),
+            autofocus: true,
+            controller: taskNameController,
+            onSubmitted: (_) {
+              //same as submit button
+              ref.read(firstTextController.notifier).state = taskNameController;
+              final newTask = TaskDataModel(title: taskNameController.text);
+              ref.read(taskListProvider.notifier).addTask(newTask);
+              Navigator.pop(context);
+            },
+            decoration: const InputDecoration(
+                labelText: 'Title', hintText: 'eg. cry more'),
+          )
         ],
       ),
       actions: [
