@@ -1,3 +1,3 @@
-const String font = 'Classica-Book';
-const String fontBold = 'Classica-Bold';
+const String font = 'Arista';
+const String fontBold = 'Arista-Bold';
 
