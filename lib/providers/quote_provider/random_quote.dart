@@ -4,12 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_app/providers/provider_exports.dart';
 import 'package:todo_app/models/models_exports.dart';
 
-// String finalQuote = '';
-// generateQuote() async {
-//   const String uri = '	https://api.adviceslip.com/advice';
-//   final response = await http.get(Uri.parse(uri));
-//   print(response.body);
-// }
+
 
 final quoteProvider = FutureProvider<String>((ref) async {
   final prefs = await SharedPreferences.getInstance();
