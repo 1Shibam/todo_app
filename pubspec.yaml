@@ -89,6 +89,18 @@ flutter:
     - family: Classica-Bold
       fonts:
         - asset: assets/fonts/Classica-Bold.ttf
+    - family: Bayformance
+      fonts:
+        - asset: assets/fonts/Bayformance.otf
+    - family: Bayformance-Bold
+      fonts:
+        - asset: assets/fonts/Bayformance Bold.otf
+    - family: Arista
+      fonts:
+        - asset: assets/fonts/Arista-Pro-Alternate-Light-trial.ttf
+    - family: Arista-Bold
+      fonts:
+        - asset: assets/fonts/Arista-Pro-Alternate-Bold-trial.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
