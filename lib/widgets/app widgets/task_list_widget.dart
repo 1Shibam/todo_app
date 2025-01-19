@@ -12,6 +12,8 @@ class TaskListWidget extends StatelessWidget {
     return Consumer(
       builder: (context, ref, child) {
         final tasks = ref.watch(taskListProvider);
+
+        // empty task list state
         if (tasks.isEmpty) {
           return Center(
             child: Column(
@@ -26,7 +28,9 @@ class TaskListWidget extends StatelessWidget {
               ],
             ),
           );
-        } else {
+        } 
+        //when task is added to the list
+        else {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
