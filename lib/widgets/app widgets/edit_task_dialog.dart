@@ -16,10 +16,11 @@ class EditTaskDialog extends ConsumerWidget {
 
     return AlertDialog(
       title: Text(
-        'Edit Task',
+        'Update Task details',
         style: AppTextStyles.bold(),
       ),
       content: TextField(
+        autofocus: true,
         controller: controller,
         decoration: const InputDecoration(labelText: 'Task Title'),
       ),
@@ -28,7 +29,9 @@ class EditTaskDialog extends ConsumerWidget {
           onPressed: () {
             // Same as submit button
             final updatedTask = task.copyWith(title: controller.text);
-            ref.read(taskListProvider.notifier).updateTask(task.title, updatedTask);
+            ref
+                .read(taskListProvider.notifier)
+                .updateTask(task.title, updatedTask);
             Navigator.pop(context); // Close the dialog and save
           },
           child: Text(
@@ -42,7 +45,9 @@ class EditTaskDialog extends ConsumerWidget {
             final updatedTask = task.copyWith(title: controller.text);
 
             // Use Riverpod to update the state
-            ref.read(taskListProvider.notifier).updateTask(task.title, updatedTask);
+            ref
+                .read(taskListProvider.notifier)
+                .updateTask(task.title, updatedTask);
 
             Navigator.pop(context); // Close the dialog
           },
