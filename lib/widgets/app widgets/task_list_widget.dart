@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/widgets/widgets_export.dart';
 import '../../providers/provider_exports.dart';
+import 'edit_task_dialog.dart';
 
 class TaskListWidget extends StatelessWidget {
   const TaskListWidget({
@@ -28,7 +29,7 @@ class TaskListWidget extends StatelessWidget {
               ],
             ),
           );
-        } 
+        }
         //when task is added to the list
         else {
           return Column(
@@ -39,38 +40,45 @@ class TaskListWidget extends StatelessWidget {
                   itemCount: tasks.length,
                   itemBuilder: (context, index) {
                     final task = tasks[index];
-                    return ListTile(
-                      onTap: () {},
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Checkbox(
-                            value: task.isDone,
-                            onChanged: (value) {
-                              ref
-                                  .read(taskListProvider.notifier)
-                                  .toggleTaskStatus(task.title);
-                            },
-                          ),
-                          IconButton(
-                              onPressed: () {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                      child: ListTile(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        tileColor: task.isDone!
+                            ? Colors.green.withOpacity(0.3)
+                            : Colors.transparent,
+                        onLongPress: () {
+                          // Show the EditTaskDialog on long press
+                          showDialog(
+                            context: context,
+                            builder: (context) => EditTaskDialog(task: task),
+                          );
+                        },
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Checkbox(
+                              value: task.isDone,
+                              onChanged: (value) {
                                 ref
                                     .read(taskListProvider.notifier)
-                                    .deleteTask(task.title);
+                                    .toggleTaskStatus(task.title);
                               },
-                              icon: const Icon(Icons.delete))
-                        ],
-                      ),
-                      title: Text(
-                        task.title,
-                        style: task.isDone!
-                            ? AppTextStyles.normal().copyWith(
-                                decoration: TextDecoration.lineThrough,
-                                decorationThickness: 2.0,
-                                decorationColor: Colors.green,
-                                decorationStyle: TextDecorationStyle.solid,
-                              )
-                            : AppTextStyles.normal(),
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  ref
+                                      .read(taskListProvider.notifier)
+                                      .deleteTask(task.title);
+                                },
+                                icon: const Icon(Icons.delete))
+                          ],
+                        ),
+                        title: Text(
+                          task.title,
+                          style: AppTextStyles.normal(),
+                        ),
                       ),
                     );
                   },
