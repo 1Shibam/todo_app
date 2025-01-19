@@ -38,42 +38,73 @@ class TaskListWidget extends StatelessWidget {
                 final task = tasks[index];
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
-                  child: ListTile(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
-                    tileColor: task.isDone!
-                        ? Colors.green.withOpacity(0.3)
-                        : Colors.lightBlue.withOpacity(0.18),
-                    onLongPress: () {
-                      // Show the EditTaskDialog on long press
-                      showDialog(
-                        context: context,
-                        builder: (context) => EditTaskDialog(task: task),
-                      );
+                  child: Dismissible(
+                    direction: DismissDirection.endToStart,
+                    onDismissed: (direction) {
+                      if (direction == DismissDirection.endToStart) {
+                        ref
+                            .read(taskListProvider.notifier)
+                            .deleteTask(task.title);
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          content: Text('Task deleted'),
+                          backgroundColor: Colors.red,
+                        ));
+                      }
                     },
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Checkbox(
-                          value: task.isDone,
-                          onChanged: (value) {
-                            ref
-                                .read(taskListProvider.notifier)
-                                .toggleTaskStatus(task.title);
-                          },
+                    key: Key(task.title),
+                    background: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: const Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Icon(
+                            Icons.delete,
+                            color: Colors.white,
+                          ),
                         ),
-                        IconButton(
-                            onPressed: () {
+                      ),
+                    ),
+                    child: ListTile(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                      tileColor: task.isDone!
+                          ? Colors.green.withOpacity(0.3)
+                          : Colors.lightBlue.withOpacity(0.18),
+                      onLongPress: () {
+                        // Show the EditTaskDialog on long press
+                        showDialog(
+                          context: context,
+                          builder: (context) => EditTaskDialog(task: task),
+                        );
+                      },
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Checkbox(
+                            value: task.isDone,
+                            onChanged: (value) {
                               ref
                                   .read(taskListProvider.notifier)
-                                  .deleteTask(task.title);
+                                  .toggleTaskStatus(task.title);
                             },
-                            icon: const Icon(Icons.delete))
-                      ],
-                    ),
-                    title: Text(
-                      task.title,
-                      style: AppTextStyles.normal(),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                ref
+                                    .read(taskListProvider.notifier)
+                                    .deleteTask(task.title);
+                              },
+                              icon: const Icon(Icons.delete))
+                        ],
+                      ),
+                      title: Text(
+                        task.title,
+                        style: AppTextStyles.normal(),
+                      ),
                     ),
                   ),
                 );
