@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/providers/task%20providers/task_list_provider.dart';
-import 'package:todo_app/widgets/app%20widgets/app_text_styles.dart';
+import 'package:todo_app/widgets/widgets_export.dart';
+import '../../providers/provider_exports.dart';
 
 class TaskListWidget extends StatelessWidget {
   const TaskListWidget({
@@ -37,6 +36,7 @@ class TaskListWidget extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final task = tasks[index];
                     return ListTile(
+                      onTap: () {},
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [

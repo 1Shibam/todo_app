@@ -12,7 +12,7 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
 
     return AlertDialog(
       title: Text(
-        'Enter Your Input',
+        'Enter Task Details',
         style: AppTextStyles.bold(),
       ),
       content: Column(
