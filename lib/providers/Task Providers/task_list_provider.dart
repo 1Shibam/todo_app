@@ -24,6 +24,16 @@ class TaskListNotifier extends StateNotifier<List<TaskDataModel>> {
     state = state.where((task) => task.title != title).toList();
   }
 
+  //update a task by title
+  void updateTask(String title, TaskDataModel updatedTask) {
+    state = state.map((task) {
+      if (task.title == title) {
+        return updatedTask; // Replace the task with the updated task
+      }
+      return task;
+    }).toList();
+  }
+
   // Clear all deleted tasks
   void clearDeletedTasks() {
     state = state.where((task) => !(task.isDeleted ?? false)).toList();
