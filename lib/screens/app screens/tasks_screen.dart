@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:flutter/material.dart';
+import 'package:todo_app/database/database_service.dart';
 import 'package:todo_app/widgets/widgets_export.dart';
 
 class TasksScreen extends StatelessWidget {
@@ -8,6 +9,7 @@ class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final DatabaseService dbService = DatabaseService.instance;
     //devices screen height and width
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
