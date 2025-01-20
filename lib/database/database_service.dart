@@ -5,7 +5,7 @@ class DatabaseService {
   static Database? db;
   static final DatabaseService instance = DatabaseService._constructor();
 
-  static const String taskTableName = 'tasks'; // Make it a static const
+  static String taskTableName = 'tasks'; // Make it a static const
   static String taskId = 'id';
   static String taskName = 'title';
   static String taskStatus = 'isDone';
@@ -32,12 +32,20 @@ class DatabaseService {
           CREATE TABLE $taskTableName (
             $taskId INTEGER PRIMARY KEY AUTOINCREMENT,
             $taskName TEXT NOT NULL,
-            $taskDesc TEXT,
             $taskStatus INTEGER NOT NULL
           )
         ''');
       },
     );
     return database; // Ensure the database is returned
+  }
+
+  //methods
+  void addTaskDB(String content) async {
+    final db = await database;
+    await db.insert(taskTableName, {
+      taskName: content,
+      taskStatus: 0,
+    });
   }
 }

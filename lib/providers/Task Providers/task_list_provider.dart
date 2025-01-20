@@ -4,6 +4,8 @@ import 'package:todo_app/models/data%20moodels/task_data_model.dart';
 class TaskListNotifier extends StateNotifier<List<TaskDataModel>> {
   TaskListNotifier() : super([]);
 
+  
+
   // Add a task
   void addTask(TaskDataModel task) {
     final newTask = task;
