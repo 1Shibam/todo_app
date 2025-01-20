@@ -45,11 +45,11 @@ class TaskListWidget extends StatelessWidget {
                         ref
                             .read(taskListProvider.notifier)
                             .deleteTask(task.title);
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                          content: Text('Task deleted'),
-                          backgroundColor: Colors.red,
-                        ));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Task deleted'),
+                                backgroundColor: Colors.red,
+                                duration: Duration(seconds: 1)));
                       }
                     },
                     key: Key(task.title),
