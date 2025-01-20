@@ -1,4 +1,4 @@
-# The Ultimate To-Do App 🌟
+# The Ultimate To-Do App (No one asked for)🌟
 
 Welcome to **The Ultimate To-Do App**, the most revolutionary, groundbreaking, and life-altering project you will ever come across. Forget everything you know about productivity apps because this one... oh boy, this one is **THE ONE**.
 
@@ -47,9 +47,9 @@ We spared no expense and went all out with the latest and greatest technologies:
    flutter run
    ```
 
-## Screenshots (Prepare to Be Stunned)
+## Small video tutorial
 
-Coming soon... because perfection takes time.
+https://github.com/user-attachments/assets/e8ef1d02-7e0b-4c5f-9466-43ba266f7837
 
 ## Why You Need This
 
