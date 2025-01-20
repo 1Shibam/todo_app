@@ -6,7 +6,8 @@ class TaskListNotifier extends StateNotifier<List<TaskDataModel>> {
 
   // Add a task
   void addTask(TaskDataModel task) {
-    state = [...state, task];
+    final newTask = task;
+    state = [...state, newTask];
   }
 
   // Toggle the 'isDone' status of a task
