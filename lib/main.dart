@@ -6,19 +6,19 @@ import 'package:todo_app/databasae/database.dart';
 import 'package:todo_app/screens/app%20screens/tasks_screen.dart';
 import 'package:todo_app/widgets/widgets_export.dart';
 
-void main() async{
+void main(ref) async{
   WidgetsFlutterBinding.ensureInitialized();
-  TodoDatabase dbHelper = TodoDatabase();
-  Database db = await dbHelper.getDataBase();
+  // TodoDatabase dbHelper = TodoDatabase();
+  
 
-  // Inserting a task
-  await db.insert('tasks', {'taskTitle': 'Learn Flutter', 'isDone': 0});
+  // // Inserting a task
+  // await db.insert('tasks', {'title': 'Learn Flutter', 'isDone': 0});
 
-  // Fetching tasks
-  List<Map<String, dynamic>> tasks = await db.query('tasks');
-  for (var task in tasks) {
-    print('Task: ${task['taskTitle']} - Completed: ${task['isDone'] == 1}');
-  }
+  // // Fetching tasks
+  // List<Map<String, dynamic>> tasks = await db.query('tasks');
+  // for (var task in tasks) {
+  //   print('Task: ${task['title']} - Completed: ${task['isDone'] == 1}');
+  // }
   debugPaintSizeEnabled = false;
   runApp(const ProviderScope(child: TodoApp()));
 }
