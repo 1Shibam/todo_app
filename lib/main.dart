@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:todo_app/databasae/database.dart';
 import 'package:todo_app/screens/app%20screens/tasks_screen.dart';
 import 'package:todo_app/widgets/widgets_export.dart';
 
