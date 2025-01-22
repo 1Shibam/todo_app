@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/databasae/database_methods.dart';
 import 'package:todo_app/providers/provider_exports.dart';
+import 'package:todo_app/providers/quote_provider/task_list_provider.dart';
 import '../widgets_export.dart';
 
 //Text controllers
@@ -59,6 +60,7 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
               ref.read(descTextControllerProvider).text = value;
               insertTask(ref, titleController.text,
                   description: descController.text);
+              ref.invalidate(taskListProvider);
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text('Task added to the database'),
@@ -86,13 +88,13 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
 
             insertTask(ref, titleController.text,
                 description: descController.text);
+            ref.invalidate(taskListProvider);
+
             Navigator.pop(context);
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               content: Text('Task added to the database'),
               duration: Duration(seconds: 1),
             ));
-
-           
           },
           child: Text(
             'Submit',
