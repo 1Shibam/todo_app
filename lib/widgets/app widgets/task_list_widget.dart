@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/widgets/widgets_export.dart';
 import '../../providers/provider_exports.dart';
-import 'edit_task_dialog.dart';
 
 class TaskListWidget extends StatelessWidget {
   const TaskListWidget({

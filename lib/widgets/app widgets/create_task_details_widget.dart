@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/models/models_exports.dart';
 import 'package:todo_app/providers/provider_exports.dart';
 import '../widgets_export.dart';
 
@@ -8,7 +7,7 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final taskNameController = ref.watch(firstTextController);
+    
 
     return AlertDialog(
       title: Text(
@@ -22,12 +21,12 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
           TextField(
             style: AppTextStyles.normal(),
             autofocus: true,
-            controller: taskNameController,
+         
             onSubmitted: (_) {
               //same as submit button
-              ref.read(firstTextController.notifier).state = taskNameController;
-              final newTask = TaskDataModel(title: taskNameController.text);
-              ref.read(taskListProvider.notifier).addTask(newTask);
+             
+              
+             
               Navigator.pop(context);
             },
             decoration: const InputDecoration(
@@ -48,9 +47,8 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
         ElevatedButton(
           onPressed: () {
             // Save input to the state
-            ref.read(firstTextController.notifier).state = taskNameController;
-            final newTask = TaskDataModel(title: taskNameController.text);
-            ref.read(taskListProvider.notifier).addTask(newTask);
+            
+         
 
             Navigator.pop(context); // Close the dialog
           },
