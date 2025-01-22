@@ -8,8 +8,7 @@ import 'package:sqflite/sqflite.dart';
     print('Database path: $dbPath'); // Debugging line
     String path = join(dbPath, 'task_database.db');
 
-    //delete if there is any existing database
-    await deleteDatabase(path);
+
 
     //open the database
     return openDatabase(
