@@ -1,14 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/databasae/database_methods.dart';
 import 'package:todo_app/providers/provider_exports.dart';
 import '../widgets_export.dart';
+
+//Text controllers
+final titleTextControllerProvider = AutoDisposeProvider<TextEditingController>(
+    (ref) => TextEditingController());
+final descTextControllerProvider = AutoDisposeProvider<TextEditingController>(
+    (ref) => TextEditingController());
+
+//Focus Nodes
+
+final titleFocusNodeProvider =
+    AutoDisposeProvider<FocusNode>((ref) => FocusNode());
+final descFocusNondeProvider =
+    AutoDisposeProvider<FocusNode>((ref) => FocusNode());
 
 class CreateTaskDetailsWidget extends ConsumerWidget {
   const CreateTaskDetailsWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
-
+    final titleController = ref.watch(titleTextControllerProvider);
+    final descController = ref.watch(descTextControllerProvider);
+    final titleFocusNode = ref.watch(titleFocusNodeProvider);
+    final descFocusNode = ref.watch(descFocusNondeProvider);
     return AlertDialog(
       title: Text(
         'Enter Task Details',
@@ -18,16 +34,36 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          TextField(
+          TextFormField(
+            style: AppTextStyles.normal(),
+            controller: titleController,
+            focusNode: titleFocusNode,
+            autofocus: true,
+            onFieldSubmitted: (value) {
+              ref.read(titleTextControllerProvider).text = value;
+
+              FocusScope.of(context).requestFocus(descFocusNode);
+            },
+            decoration: const InputDecoration(
+                labelText: 'Title', hintText: 'eg. cry more'),
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          TextFormField(
+            controller: descController,
+            focusNode: descFocusNode,
             style: AppTextStyles.normal(),
             autofocus: true,
-         
-            onSubmitted: (_) {
-              //same as submit button
-             
-              
-             
+            onFieldSubmitted: (value) {
+              ref.read(descTextControllerProvider).text = value;
+              insertTask(ref, titleController.text,
+                  description: descController.text);
               Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text('Task added to the database'),
+                duration: Duration(seconds: 1),
+              ));
             },
             decoration: const InputDecoration(
                 labelText: 'Title', hintText: 'eg. cry more'),
@@ -47,10 +83,16 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
         ElevatedButton(
           onPressed: () {
             // Save input to the state
-            
-         
 
-            Navigator.pop(context); // Close the dialog
+            insertTask(ref, titleController.text,
+                description: descController.text);
+            Navigator.pop(context);
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Task added to the database'),
+              duration: Duration(seconds: 1),
+            ));
+
+           
           },
           child: Text(
             'Submit',
