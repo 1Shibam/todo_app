@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:sqflite/sqflite.dart';
 import 'package:todo_app/databasae/database.dart';
 import 'package:todo_app/providers/provider_exports.dart';
