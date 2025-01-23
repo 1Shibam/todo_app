@@ -16,7 +16,7 @@ class DeleteTaskAlert extends ConsumerWidget {
     return AlertDialog(
       title: Text('Delete Task!?', style: AppTextStyles.bold()),
       content: Text(
-        'Are you sure you want to delete this task?',
+        'Are you sure you want to delete ${task['title'].toString().split(' ').first}...?',
         style: AppTextStyles.normal(),
       ),
       actions: [
