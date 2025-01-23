@@ -8,16 +8,16 @@ class FloatingActionButtonWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return FloatingActionButton(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return const CreateTaskDetailsWidget();
-                },
-              );
-            },
-            backgroundColor: Colors.grey,
-            child: const Icon(Icons.add_task),
-          );
+      onPressed: () {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const CreateTaskDetailsWidget();
+          },
+        );
+      },
+      backgroundColor: Colors.white70,
+      child: const Icon(Icons.add_task),
+    );
   }
 }
