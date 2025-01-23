@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/databasae/database_methods.dart';
 import 'package:todo_app/providers/provider_exports.dart';
-import 'package:todo_app/providers/quote_provider/task_list_provider.dart';
+import 'package:todo_app/providers/task_list_provider.dart';
 import '../widgets_export.dart';
 
 //Text controllers
