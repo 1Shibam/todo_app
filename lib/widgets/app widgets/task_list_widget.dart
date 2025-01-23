@@ -3,6 +3,7 @@ import 'package:todo_app/databasae/database_methods.dart';
 import 'package:todo_app/providers/provider_exports.dart';
 import 'package:todo_app/providers/quote_provider/task_list_provider.dart';
 import 'package:todo_app/widgets/app%20widgets/app_text_styles.dart';
+import 'package:todo_app/widgets/app%20widgets/delete_task_alert_widget.dart';
 import 'package:todo_app/widgets/app%20widgets/update_task_dialog.dart';
 
 class TaskListWidget extends ConsumerWidget {
@@ -13,15 +14,14 @@ class TaskListWidget extends ConsumerWidget {
     final taskListAsync = ref.watch(taskListProvider);
 
     return Scaffold(
-      appBar: AppBar(
-          title: Text(
-        'Tasks',
-        style: AppTextStyles.bold(),
-      )),
       body: taskListAsync.when(
         data: (tasks) {
           if (tasks.isEmpty) {
-            return const Center(child: Text('No tasks available.'));
+            return Center(
+                child: Text(
+              'No tasks available.',
+              style: AppTextStyles.normal(),
+            ));
           }
           return ListView.builder(
             itemCount: tasks.length,
@@ -52,11 +52,26 @@ class TaskListWidget extends ConsumerWidget {
                       style: AppTextStyles.normal(
                           fontSize: 16, color: Colors.black87),
                     ),
-                    trailing: Checkbox(
-                      value: task['isDone'] == 1,
-                      onChanged: (value) {
-                        toggleTaskStatus(ref, task['id']);
-                      },
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Checkbox(
+                          value: task['isDone'] == 1,
+                          onChanged: (value) {
+                            toggleTaskStatus(ref, task['id']);
+                          },
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return DeleteTaskAlert(task: task);
+                                },
+                              );
+                            },
+                            icon: const Icon(Icons.delete))
+                      ],
                     )
                     // Icon(task['isDone'] == 1 ? Icons.check : Icons.close),
                     ),
@@ -74,3 +89,4 @@ class TaskListWidget extends ConsumerWidget {
     );
   }
 }
+
