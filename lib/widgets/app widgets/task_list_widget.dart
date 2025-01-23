@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/databasae/database_methods.dart';
 import 'package:todo_app/providers/provider_exports.dart';
-import 'package:todo_app/providers/quote_provider/task_list_provider.dart';
+import 'package:todo_app/providers/task_list_provider.dart';
 import 'package:todo_app/widgets/app%20widgets/app_text_styles.dart';
 import 'package:todo_app/widgets/app%20widgets/delete_task_alert_widget.dart';
 import 'package:todo_app/widgets/app%20widgets/update_task_dialog.dart';
@@ -41,7 +41,7 @@ class TaskListWidget extends ConsumerWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12)),
                     tileColor: task['isDone'] == 1
-                        ? Colors.lightGreen.withOpacity(0.18)
+                        ? Colors.lightGreen.withOpacity(0.4)
                         : Colors.lightBlue.withOpacity(0.18),
                     title: Text(
                       task['title'] ?? 'No Title',
