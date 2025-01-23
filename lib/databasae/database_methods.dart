@@ -38,3 +38,22 @@ Future<void> toggleTaskStatus(WidgetRef ref, int taskId) async {
 
   ref.invalidate(taskListProvider);
 }
+
+//updating task
+Future<void> updateTask(WidgetRef ref, int taskId, String newTitle, {String newDescription = ''}) async {
+  final db = await ref.read(databaseProvider);
+
+  await db.update(
+    'tasks',
+    {
+      'title': newTitle,
+      'desc': newDescription,
+    },
+    where: 'id = ?',
+    whereArgs: [taskId],
+  );
+
+  // After updating, invalidate the task list to refresh the UI
+  ref.invalidate(taskListProvider);
+}
+
