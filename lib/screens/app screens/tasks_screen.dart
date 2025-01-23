@@ -27,21 +27,17 @@ class TasksScreen extends StatelessWidget {
       floatingActionButton: const FloatingActionButtonWidget(),
       body: Padding(
         padding: EdgeInsets.all(padding),
-        child: Column(
+        child: const Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const TodaysQuote(),
-            const SizedBox(
+            TodaysQuote(),
+            SizedBox(
               height: 12,
             ),
-            Text(
-              'Your task will Appear below - ',
-              style: AppTextStyles.bold(),
-            ),
-            const SizedBox(
+            SizedBox(
               height: 12,
             ),
-            Expanded(child: const TaskListWidget()),
+            Expanded(child: TaskListWidget()),
           ],
         ),
       ),
