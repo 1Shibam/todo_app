@@ -2,8 +2,10 @@
 
 import 'package:sqflite/sqflite.dart';
 import 'package:todo_app/databasae/database.dart';
+import 'package:todo_app/providers/completed_tasks_list_provider.dart';
+import 'package:todo_app/providers/deleted_task_list_provider.dart';
 import 'package:todo_app/providers/provider_exports.dart';
-import 'package:todo_app/providers/quote_provider/task_list_provider.dart';
+import 'package:todo_app/providers/task_list_provider.dart';
 
 //insert a task to database--
 
@@ -13,6 +15,7 @@ Future<void> insertTask(WidgetRef ref, String taskTitle,
   await db.insert('tasks',
       {'title': taskTitle, 'desc': description, 'isDone': 0, 'isDeleted': 0},
       conflictAlgorithm: ConflictAlgorithm.replace);
+  ref.invalidate(taskListProvider);
 
   //checking if the method is running or not
   print(
@@ -37,10 +40,12 @@ Future<void> toggleTaskStatus(WidgetRef ref, int taskId) async {
       where: 'id = ?', whereArgs: [taskId]);
 
   ref.invalidate(taskListProvider);
+  ref.invalidate(completedTasksListProvider);
 }
 
 //updating task
-Future<void> updateTask(WidgetRef ref, int taskId, String newTitle, {String newDescription = ''}) async {
+Future<void> updateTask(WidgetRef ref, int taskId, String newTitle,
+    {String newDescription = ''}) async {
   final db = await ref.read(databaseProvider);
 
   await db.update(
@@ -59,7 +64,22 @@ Future<void> updateTask(WidgetRef ref, int taskId, String newTitle, {String newD
 
 //delete existing tasks
 
-Future<void> deleteTask(WidgetRef ref, int taskId) async {
+Future<void> softDeleteTask(WidgetRef ref, int taskId) async {
+  final db = await ref.read(databaseProvider);
+
+  await db.update(
+    'tasks',
+    {'isDeleted': 1},
+    where: 'id = ?',
+    whereArgs: [taskId],
+  );
+
+  // After deleting, invalidate the task list to refresh the UI
+  ref.invalidate(taskListProvider);
+  ref.invalidate(deletedTaskListProvider);
+}
+
+Future<void> permanentDeleteTask(WidgetRef ref, int taskId) async {
   final db = await ref.read(databaseProvider);
 
   await db.delete(
@@ -70,13 +90,9 @@ Future<void> deleteTask(WidgetRef ref, int taskId) async {
 
   // After deleting, invalidate the task list to refresh the UI
   ref.invalidate(taskListProvider);
+  ref.invalidate(deletedTaskListProvider);
 }
 
-//fetch deleted tasks from database
-Future<List<Map<String, dynamic>>> getDeletedTasks(WidgetRef ref) async {
-  final db = await ref.read(databaseProvider);
-  return await db.query('tasks', where: 'isDeleted = ?', whereArgs: [1]);
-}
 
 
 
