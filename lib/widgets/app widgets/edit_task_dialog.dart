@@ -1,54 +1,87 @@
-import 'package:flutter/material.dart';
-import 'package:todo_app/models/data%20moodels/task_data_model.dart';
-import 'package:todo_app/providers/provider_exports.dart';
+// import 'package:flutter/material.dart';
+// import 'package:todo_app/models/data%20moodels/task_data_model.dart';
+// import 'package:todo_app/providers/provider_exports.dart';
 
-import '../widgets_export.dart';
+// import '../widgets_export.dart';
 
-class EditTaskDialog extends ConsumerWidget {
-  final TaskDataModel task;
+// //Text controllers
+// final titleUpdateTextControllerProvider = AutoDisposeProvider<TextEditingController>(
+//     (ref) => TextEditingController());
+// final descUpdateTextControllerProvider = AutoDisposeProvider<TextEditingController>(
+//     (ref) => TextEditingController());
 
-  const EditTaskDialog({super.key, required this.task});
+// //Focus Nodes
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
+// final titleFocusNodeProvider =
+//     AutoDisposeProvider<FocusNode>((ref) => FocusNode());
+// final descFocusNondeProvider =
+//     AutoDisposeProvider<FocusNode>((ref) => FocusNode());
 
+// class EditTaskDialog extends ConsumerWidget {
+//   final TaskDataModel task;
 
-    return AlertDialog(
-      title: Text(
-        'Update Task details',
-        style: AppTextStyles.bold(),
-      ),
-      content: const TextField(
-        autofocus: true,
+//   const EditTaskDialog({super.key, required this.task});
 
-        decoration: InputDecoration(labelText: 'Task Title'),
-      ),
-      actions: [
-        TextButton(
-          onPressed: () {
-            // Same as submit button
-
-            Navigator.pop(context); // Close the dialog and save
-          },
-          child: Text(
-            'Cancel',
-            style: AppTextStyles.normal(color: Colors.black, fontSize: 12),
-          ),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            // Save the updated task
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//      final titleController = ref.watch(titleUpdateTextControllerProvider);
+//     final descController = ref.watch(descUpdateTextControllerProvider);
+//     final titleFocusNode = ref.watch(titleFocusNodeProvider);
+//     final descFocusNode = ref.watch(descFocusNondeProvider);
 
 
+//     return AlertDialog(
+//       title: Text(
+//         'Update Task details',
+//         style: AppTextStyles.bold(),
+//       ),
+//       content: Column(
+//         children: [
+//           TextField(
+//             controller: titleController,
+//             focusNode: titleFocusNode,
+//             autofocus: true,
+//             decoration: InputDecoration(labelText: 'Title'),
+//           ),
+//         ],
+//       ),
+//       actions: [
+//         TextButton(
+//           onPressed: () {
+//             // Same as submit button
 
-            Navigator.pop(context); // Close the dialog
-          },
-          child: Text(
-            'Save',
-            style: AppTextStyles.normal(color: Colors.black, fontSize: 12),
-          ),
-        ),
-      ],
-    );
-  }
-}
+//             Navigator.pop(context); // Close the dialog and save
+//           },
+//           child: Text(
+//             'Cancel',
+//             style: AppTextStyles.normal(color: Colors.black, fontSize: 12),
+//           ),
+//         ),
+//         TextButton(
+//           onPressed: () {
+//             // Same as submit button
+
+//             Navigator.pop(context); // Close the dialog and save
+//           },
+//           child: Text(
+//             'Cancel',
+//             style: AppTextStyles.normal(color: Colors.black, fontSize: 12),
+//           ),
+//         ),
+//         ElevatedButton(
+//           onPressed: () {
+//             // Save the updated task
+
+
+
+//             Navigator.pop(context); // Close the dialog
+//           },
+//           child: Text(
+//             'Save',
+//             style: AppTextStyles.normal(color: Colors.black, fontSize: 12),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
