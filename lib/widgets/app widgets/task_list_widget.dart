@@ -3,6 +3,7 @@ import 'package:todo_app/databasae/database_methods.dart';
 import 'package:todo_app/providers/provider_exports.dart';
 import 'package:todo_app/providers/quote_provider/task_list_provider.dart';
 import 'package:todo_app/widgets/app%20widgets/app_text_styles.dart';
+import 'package:todo_app/widgets/app%20widgets/update_task_widget.dart';
 
 class TaskListWidget extends ConsumerWidget {
   const TaskListWidget({super.key});
@@ -30,26 +31,35 @@ class TaskListWidget extends ConsumerWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                 child: ListTile(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                  tileColor: task['isDone'] == 1
-                      ? Colors.lightGreen.withOpacity(0.18)
-                      : Colors.lightBlue.withOpacity(0.18),
-                  title: Text(
-                    task['title'] ?? 'No Title',
-                    style: AppTextStyles.bold(),
-                  ), // Ensure correct field name
-                  subtitle: Text(
-                    task['desc'] ?? 'No Description',
-                    style: AppTextStyles.normal(
-                        fontSize: 16, color: Colors.black87),
-                  ),
-                  trailing:
-                      Checkbox(value: task['isDone']  == 1, onChanged: (value) {
+                    onLongPress: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) =>
+                            TaskEditPage(task: task), // Pass the task to edit
+                      );
+                    },
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                    tileColor: task['isDone'] == 1
+                        ? Colors.lightGreen.withOpacity(0.18)
+                        : Colors.lightBlue.withOpacity(0.18),
+                    title: Text(
+                      task['title'] ?? 'No Title',
+                      style: AppTextStyles.bold(),
+                    ), // Ensure correct field name
+                    subtitle: Text(
+                      task['desc'] ?? 'No Description',
+                      style: AppTextStyles.normal(
+                          fontSize: 16, color: Colors.black87),
+                    ),
+                    trailing: Checkbox(
+                      value: task['isDone'] == 1,
+                      onChanged: (value) {
                         toggleTaskStatus(ref, task['id']);
-                      },)
-                      // Icon(task['isDone'] == 1 ? Icons.check : Icons.close),
-                ),
+                      },
+                    )
+                    // Icon(task['isDone'] == 1 ? Icons.check : Icons.close),
+                    ),
               );
             },
           );
