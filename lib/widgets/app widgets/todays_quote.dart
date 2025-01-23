@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/providers/provider_exports.dart';
 import 'package:todo_app/providers/quote_provider/random_quote.dart';
-import 'package:todo_app/widgets/app%20widgets/app_text_styles.dart';
+import 'package:todo_app/widgets/widgets_export.dart';
+
 
 class TodaysQuote extends ConsumerWidget {
   const TodaysQuote({super.key});
