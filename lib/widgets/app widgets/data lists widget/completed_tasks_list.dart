@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/providers/completed_tasks_list_provider.dart';
-import 'package:todo_app/providers/provider_exports.dart';
-import 'package:todo_app/widgets/app%20widgets/app_text_styles.dart';
+import 'package:todo_app/providers/data%20providers/completed_tasks_list_provider.dart';
+import 'package:todo_app/providers/data%20providers/provider_exports.dart';
+import 'package:todo_app/widgets/widgets_export.dart';
 
 class CompletedTaskList extends ConsumerWidget {
   const CompletedTaskList({super.key});
@@ -15,9 +15,13 @@ class CompletedTaskList extends ConsumerWidget {
         data: (tasks) {
           if (tasks.isEmpty) {
             return Center(
-                child: Text(
-              'No Deleted tasks available.',
-              style: AppTextStyles.normal(),
+                child: Column(
+              children: [
+                Text(
+                  'No task is completed yet!, Lazy?.',
+                  style: AppTextStyles.normal(),
+                ),
+              ],
             ));
           }
           return ListView.builder(

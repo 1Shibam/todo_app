@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:todo_app/databasae/database.dart';
-import 'package:todo_app/providers/provider_exports.dart';
+import 'package:todo_app/providers/data%20providers/provider_exports.dart';
 
 final completedTasksListProvider =
     FutureProvider<List<Map<String, dynamic>>>((ref) async {

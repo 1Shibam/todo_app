@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:todo_app/providers/provider_exports.dart';
+import 'package:todo_app/providers/data%20providers/provider_exports.dart';
 import 'package:todo_app/models/models_exports.dart';
 
 

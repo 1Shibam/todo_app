@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/providers/provider_exports.dart';
-import 'package:todo_app/widgets/app%20widgets/create_task_details_widget.dart';
+import 'package:todo_app/providers/data%20providers/provider_exports.dart';
+import 'package:todo_app/widgets/app%20widgets/dialogs/create_task_details_widget.dart';
 
 class FloatingActionButtonWidget extends ConsumerWidget {
   const FloatingActionButtonWidget({super.key});

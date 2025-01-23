@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/databasae/database_methods.dart';
-import 'package:todo_app/providers/provider_exports.dart';
+import 'package:todo_app/providers/data%20providers/provider_exports.dart';
 import 'package:todo_app/widgets/widgets_export.dart';
 
 class RestoreTaskAlert extends ConsumerWidget {
@@ -15,10 +15,17 @@ class RestoreTaskAlert extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return AlertDialog(
       title: Text('Restore Task!?', style: AppTextStyles.bold()),
-      content: Text(
-        'Are you sure you want to restore ${task['title'].toString().split(' ').first}...?',
-        style: AppTextStyles.normal(),
-      ),
+      content: RichText(
+          text: TextSpan(
+              text: 'Are you sure you want to restore ',
+              style: AppTextStyles.normal(),
+              children: [
+            TextSpan(
+                text: '${task['title'].toString().split(' ').first}...',
+                style: AppTextStyles.normal(color: Colors.green).copyWith(
+                    decoration: TextDecoration.underline,
+                    decorationThickness: 3))
+          ])),
       actions: [
         TextButton(
             onPressed: () {

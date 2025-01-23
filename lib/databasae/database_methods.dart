@@ -2,10 +2,10 @@
 
 import 'package:sqflite/sqflite.dart';
 import 'package:todo_app/databasae/database.dart';
-import 'package:todo_app/providers/completed_tasks_list_provider.dart';
-import 'package:todo_app/providers/deleted_task_list_provider.dart';
-import 'package:todo_app/providers/provider_exports.dart';
-import 'package:todo_app/providers/task_list_provider.dart';
+import 'package:todo_app/providers/data%20providers/completed_tasks_list_provider.dart';
+import 'package:todo_app/providers/data%20providers/deleted_task_list_provider.dart';
+import 'package:todo_app/providers/data%20providers/provider_exports.dart';
+import 'package:todo_app/providers/data%20providers/task_list_provider.dart';
 
 //insert a task to database--
 
@@ -85,13 +85,13 @@ Future<void> softDeleteTask(WidgetRef ref, int taskId) async {
   ref.invalidate(completedTasksListProvider);
 }
 
-Future<void> permanentDeleteTask(WidgetRef ref, int taskId) async {
+Future<void> permanentDeleteTask(WidgetRef ref) async {
   final db = await ref.read(databaseProvider);
 
   await db.delete(
     'tasks',
-    where: 'id = ?',
-    whereArgs: [taskId],
+    where: 'isDeleted = ?',
+    whereArgs: [1],
   );
 
   // After deleting, invalidate the task list to refresh the UI

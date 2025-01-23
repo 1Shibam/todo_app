@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/widgets/app%20widgets/completed_tasks_list.dart';
-import 'package:todo_app/widgets/app%20widgets/deleted_tasks_list.dart';
+import 'package:todo_app/widgets/app%20widgets/data%20lists%20widget/completed_tasks_list.dart';
 import 'package:todo_app/widgets/widgets_export.dart';
 
 class TasksScreen extends StatelessWidget {
@@ -24,7 +23,7 @@ class TasksScreen extends StatelessWidget {
           style: AppTextStyles.bold(fontSize: titleFontSize),
         ),
       ),
-      floatingActionButton: const FloatingActionButtonWidget(),
+      // floatingActionButton: const FloatingActionButtonWidget(),
       body: Padding(
         padding: EdgeInsets.all(padding),
         child: Column(
@@ -62,13 +61,29 @@ class TasksScreen extends StatelessWidget {
                       child: TabBarView(
                         children: [
                           // First Tab (All Tasks)
-                          TaskListWidget(),
+                          Stack(
+                            children: [
+                              TaskListWidget(),
+                              Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 12,
+                                      ),
+                                      child: FloatingActionButtonWidget()))
+                            ],
+                          ),
 
                           // Second Tab (Completed Tasks)
                           CompletedTaskList(),
+
                           //third tab deleted tasks
-                          DeletedTasksList()
-                          
+                          Stack(
+                            children: [
+                              DeletedTasksList(),
+                              DeleteAllPermanentlyButton()
+                            ],
+                          )
                         ],
                       ),
                     ),

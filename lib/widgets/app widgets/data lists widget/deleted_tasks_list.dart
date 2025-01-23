@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/providers/deleted_task_list_provider.dart';
-import 'package:todo_app/providers/provider_exports.dart';
-import 'package:todo_app/widgets/app%20widgets/app_text_styles.dart';
-import 'package:todo_app/widgets/app%20widgets/restore_task_alert.dart';
+import 'package:todo_app/providers/data%20providers/deleted_task_list_provider.dart';
+import 'package:todo_app/providers/data%20providers/provider_exports.dart';
+import 'package:todo_app/widgets/app%20widgets/others/app_text_styles.dart';
+import 'package:todo_app/widgets/app%20widgets/dialogs/restore_task_alert.dart';
 
 class DeletedTasksList extends ConsumerWidget {
   const DeletedTasksList({super.key});

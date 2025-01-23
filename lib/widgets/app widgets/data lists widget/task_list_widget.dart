@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/databasae/database_methods.dart';
-import 'package:todo_app/providers/provider_exports.dart';
-import 'package:todo_app/providers/task_list_provider.dart';
+import 'package:todo_app/providers/data%20providers/provider_exports.dart';
+import 'package:todo_app/providers/data%20providers/task_list_provider.dart';
 import 'package:todo_app/widgets/widgets_export.dart';
 
-import 'update_task_dialog.dart';
+import '../dialogs/update_task_dialog.dart';
 
 class TaskListWidget extends ConsumerWidget {
   const TaskListWidget({super.key});
@@ -73,7 +73,7 @@ class TaskListWidget extends ConsumerWidget {
                             icon: const Icon(Icons.delete))
                       ],
                     )
-                    // Icon(task['isDone'] == 1 ? Icons.check : Icons.close),
+                    
                     ),
               );
             },
