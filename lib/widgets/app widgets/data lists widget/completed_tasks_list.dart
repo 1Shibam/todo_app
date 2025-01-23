@@ -15,14 +15,24 @@ class CompletedTaskList extends ConsumerWidget {
         data: (tasks) {
           if (tasks.isEmpty) {
             return Center(
-                child: Column(
-              children: [
-                Text(
-                  'No task is completed yet!, Lazy?.',
-                  style: AppTextStyles.normal(),
-                ),
-              ],
-            ));
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/incomplete-hand-drawn-symbol-svgrepo-com.png',
+                    height: 160,
+                    width: 160,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'No task is completed yet!, Lazy?.',
+                    style: AppTextStyles.normal(),
+                  ),
+                ],
+              ),
+            );
           }
           return ListView.builder(
             itemCount: tasks.length,

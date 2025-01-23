@@ -19,6 +19,8 @@ class DeleteAllPermanentlyButton extends StatelessWidget {
             child: Consumer(
               builder: (context, ref, child) {
                 return FloatingActionButton(
+                  backgroundColor: Colors.white70,
+                  child: const Icon(Icons.delete_forever),
                   onPressed: () {
                     showDialog(
                       context: context,

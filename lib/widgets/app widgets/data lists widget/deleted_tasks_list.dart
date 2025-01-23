@@ -16,9 +16,22 @@ class DeletedTasksList extends ConsumerWidget {
         data: (tasks) {
           if (tasks.isEmpty) {
             return Center(
-                child: Text(
-              'No Deleted tasks available.',
-              style: AppTextStyles.normal(),
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/recycle-bin-full-svgrepo-com.png',
+                  height: 160,
+                  width: 160,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'No Deleted tasks available.',
+                  style: AppTextStyles.normal(),
+                ),
+              ],
             ));
           }
           return ListView.builder(
