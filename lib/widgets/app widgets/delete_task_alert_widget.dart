@@ -14,8 +14,7 @@ class DeleteTaskAlert extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AlertDialog(
-      title: Text('Delete Task!?',
-          style: AppTextStyles.bold()),
+      title: Text('Delete Task!?', style: AppTextStyles.bold()),
       content: Text(
         'Are you sure you want to delete this task?',
         style: AppTextStyles.normal(),
@@ -25,22 +24,17 @@ class DeleteTaskAlert extends ConsumerWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text('Cancel',
-                style: AppTextStyles.normal())),
+            child: Text('Cancel', style: AppTextStyles.normal())),
         TextButton(
             onPressed: () {
-              deleteTask(ref, task['id']);
+              softDeleteTask(ref, task['id']);
               Navigator.pop(context);
             },
             child: Container(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 8, vertical: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius:
-                      BorderRadius.circular(4)),
-              child: Text('Delete',
-                  style: AppTextStyles.normal()),
+                  color: Colors.red, borderRadius: BorderRadius.circular(4)),
+              child: Text('Delete', style: AppTextStyles.normal()),
             ))
       ],
     );
