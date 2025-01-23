@@ -38,6 +38,7 @@ class TasksScreen extends StatelessWidget {
                       labelStyle: AppTextStyles.normal(fontSize: 16),
                       unselectedLabelColor: Colors.grey,
                       labelColor: Colors.blue,
+                      indicatorColor: Colors.blue,
                       tabs: const [
                         Tab(
                           icon: Icon(Icons.list),
