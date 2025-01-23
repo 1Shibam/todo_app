@@ -15,7 +15,9 @@ Future<void> insertTask(WidgetRef ref, String taskTitle,
   await db.insert('tasks',
       {'title': taskTitle, 'desc': description, 'isDone': 0, 'isDeleted': 0},
       conflictAlgorithm: ConflictAlgorithm.replace);
-  ref.invalidate(taskListProvider);
+ ref.invalidate(taskListProvider);
+  ref.invalidate(deletedTaskListProvider);
+  ref.invalidate(completedTasksListProvider);
 
   //checking if the method is running or not
   print(
@@ -39,7 +41,8 @@ Future<void> toggleTaskStatus(WidgetRef ref, int taskId) async {
   await db.update('tasks', {'isDone': isDone},
       where: 'id = ?', whereArgs: [taskId]);
 
-  ref.invalidate(taskListProvider);
+ ref.invalidate(taskListProvider);
+  ref.invalidate(deletedTaskListProvider);
   ref.invalidate(completedTasksListProvider);
 }
 
@@ -60,6 +63,8 @@ Future<void> updateTask(WidgetRef ref, int taskId, String newTitle,
 
   // After updating, invalidate the task list to refresh the UI
   ref.invalidate(taskListProvider);
+  ref.invalidate(deletedTaskListProvider);
+  ref.invalidate(completedTasksListProvider);
 }
 
 //delete existing tasks
@@ -77,6 +82,7 @@ Future<void> softDeleteTask(WidgetRef ref, int taskId) async {
   // After deleting, invalidate the task list to refresh the UI
   ref.invalidate(taskListProvider);
   ref.invalidate(deletedTaskListProvider);
+  ref.invalidate(completedTasksListProvider);
 }
 
 Future<void> permanentDeleteTask(WidgetRef ref, int taskId) async {
@@ -91,12 +97,30 @@ Future<void> permanentDeleteTask(WidgetRef ref, int taskId) async {
   // After deleting, invalidate the task list to refresh the UI
   ref.invalidate(taskListProvider);
   ref.invalidate(deletedTaskListProvider);
+  ref.invalidate(completedTasksListProvider);
 }
 
 
 
 
 //restore deleted tasks
+
+
+Future<void> restoreTask(WidgetRef ref, int taskId) async {
+  final db = await ref.read(databaseProvider);
+
+  await db.update(
+    'tasks',
+    {'isDeleted': 0},
+    where: 'id = ?',
+    whereArgs: [taskId],
+  );
+
+  // After restoring, invalidate the task list to refresh the UI
+  ref.invalidate(taskListProvider);
+  ref.invalidate(deletedTaskListProvider);
+  ref.invalidate(completedTasksListProvider);
+}
 
 
 //sort only completed tasks
