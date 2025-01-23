@@ -57,3 +57,19 @@ Future<void> updateTask(WidgetRef ref, int taskId, String newTitle, {String newD
   ref.invalidate(taskListProvider);
 }
 
+//delete existing tasks
+
+Future<void> deleteTask(WidgetRef ref, int taskId) async {
+  final db = await ref.read(databaseProvider);
+
+  await db.delete(
+    'tasks',
+    where: 'id = ?',
+    whereArgs: [taskId],
+  );
+
+  // After deleting, invalidate the task list to refresh the UI
+  ref.invalidate(taskListProvider);
+}
+
+
