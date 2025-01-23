@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/widgets/app%20widgets/completed_tasks_list.dart';
+import 'package:todo_app/widgets/app%20widgets/deleted_tasks_list.dart';
 import 'package:todo_app/widgets/widgets_export.dart';
 
 class TasksScreen extends StatelessWidget {
@@ -56,26 +58,17 @@ class TasksScreen extends StatelessWidget {
                             text: "Deleted"),
                       ],
                     ),
-                    Expanded(
+                    const Expanded(
                       child: TabBarView(
                         children: [
                           // First Tab (All Tasks)
-                          const TaskListWidget(),
+                          TaskListWidget(),
 
                           // Second Tab (Completed Tasks)
-                          Center(
-                            child: Text(
-                              "Completed Tasks will appear here.",
-                              style: AppTextStyles.normal(),
-                            ),
-                          ),
+                          CompletedTaskList(),
                           //third tab deleted tasks
-                          Center(
-                            child: Text(
-                              'Deleted tasks will appear here',
-                              style: AppTextStyles.normal(),
-                            ),
-                          )
+                          DeletedTasksList()
+                          
                         ],
                       ),
                     ),
