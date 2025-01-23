@@ -3,7 +3,7 @@ import 'package:todo_app/databasae/database_methods.dart';
 import 'package:todo_app/providers/provider_exports.dart';
 import 'package:todo_app/providers/quote_provider/task_list_provider.dart';
 import 'package:todo_app/widgets/app%20widgets/app_text_styles.dart';
-import 'package:todo_app/widgets/app%20widgets/update_task_widget.dart';
+import 'package:todo_app/widgets/app%20widgets/update_task_dialog.dart';
 
 class TaskListWidget extends ConsumerWidget {
   const TaskListWidget({super.key});
@@ -34,8 +34,8 @@ class TaskListWidget extends ConsumerWidget {
                     onLongPress: () {
                       showDialog(
                         context: context,
-                        builder: (context) =>
-                            TaskEditPage(task: task), // Pass the task to edit
+                        builder: (context) => UpdateTaskDialog(
+                            task: task), // Pass the task to edit
                       );
                     },
                     shape: RoundedRectangleBorder(

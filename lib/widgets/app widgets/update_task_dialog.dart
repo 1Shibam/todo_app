@@ -20,16 +20,16 @@ final titleFocusNodeProvider =
 final descFocusNondeProvider =
     AutoDisposeProvider<FocusNode>((ref) => FocusNode());
 
-class TaskEditPage extends ConsumerStatefulWidget {
+class UpdateTaskDialog extends ConsumerStatefulWidget {
   final Map<String, dynamic> task;
 
-  const TaskEditPage({super.key, required this.task});
+  const UpdateTaskDialog({super.key, required this.task});
 
   @override
   _TaskEditPageState createState() => _TaskEditPageState();
 }
 
-class _TaskEditPageState extends ConsumerState<TaskEditPage> {
+class _TaskEditPageState extends ConsumerState<UpdateTaskDialog> {
   late TextEditingController titleController =
       ref.watch(titleUpdateTextControllerProvider);
   late TextEditingController descController =
