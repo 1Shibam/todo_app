@@ -72,4 +72,17 @@ Future<void> deleteTask(WidgetRef ref, int taskId) async {
   ref.invalidate(taskListProvider);
 }
 
+//fetch deleted tasks from database
+Future<List<Map<String, dynamic>>> getDeletedTasks(WidgetRef ref) async {
+  final db = await ref.read(databaseProvider);
+  return await db.query('tasks', where: 'isDeleted = ?', whereArgs: [1]);
+}
+
+
+
+//restore deleted tasks
+
+
+//sort only completed tasks
+
 
