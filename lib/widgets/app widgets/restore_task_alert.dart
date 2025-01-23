@@ -3,8 +3,8 @@ import 'package:todo_app/databasae/database_methods.dart';
 import 'package:todo_app/providers/provider_exports.dart';
 import 'package:todo_app/widgets/widgets_export.dart';
 
-class DeleteTaskAlert extends ConsumerWidget {
-  const DeleteTaskAlert({
+class RestoreTaskAlert extends ConsumerWidget {
+  const RestoreTaskAlert({
     super.key,
     required this.task,
   });
@@ -16,7 +16,7 @@ class DeleteTaskAlert extends ConsumerWidget {
     return AlertDialog(
       title: Text('Restore Task!?', style: AppTextStyles.bold()),
       content: Text(
-        'Are you sure you want to restore this task?',
+        'Are you sure you want to restore ${task['title'].toString().split(' ').first}...?',
         style: AppTextStyles.normal(),
       ),
       actions: [
@@ -27,7 +27,7 @@ class DeleteTaskAlert extends ConsumerWidget {
             child: Text('Cancel', style: AppTextStyles.normal())),
         TextButton(
             onPressed: () {
-              toggleTaskStatus(ref, task['id']);
+              restoreTask(ref, task['id']);
               Navigator.pop(context);
             },
             child: Container(
