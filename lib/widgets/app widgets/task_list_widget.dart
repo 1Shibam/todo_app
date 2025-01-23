@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/databasae/database_methods.dart';
 import 'package:todo_app/providers/provider_exports.dart';
 import 'package:todo_app/providers/quote_provider/task_list_provider.dart';
 import 'package:todo_app/widgets/app%20widgets/app_text_styles.dart';
@@ -26,11 +27,14 @@ class TaskListWidget extends ConsumerWidget {
             itemBuilder: (context, index) {
               final task = tasks[index];
               return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                 child: ListTile(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
-                  tileColor: Colors.lightBlue.withOpacity(0.18),
+                  tileColor: task['isDone'] == 1
+                      ? Colors.lightGreen.withOpacity(0.18)
+                      : Colors.lightBlue.withOpacity(0.18),
                   title: Text(
                     task['title'] ?? 'No Title',
                     style: AppTextStyles.bold(),
@@ -41,7 +45,10 @@ class TaskListWidget extends ConsumerWidget {
                         fontSize: 16, color: Colors.black87),
                   ),
                   trailing:
-                      Icon(task['isDone'] == 1 ? Icons.check : Icons.close),
+                      Checkbox(value: task['isDone']  == 1, onChanged: (value) {
+                        toggleTaskStatus(ref, task['id']);
+                      },)
+                      // Icon(task['isDone'] == 1 ? Icons.check : Icons.close),
                 ),
               );
             },
