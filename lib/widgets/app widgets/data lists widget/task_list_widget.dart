@@ -18,20 +18,22 @@ class TaskListWidget extends ConsumerWidget {
         data: (tasks) {
           if (tasks.isEmpty) {
             return Center(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/images/empty file.png',
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  'No tasks available.',
-                  style: AppTextStyles.normal(),
-                ),
-              ],
+                child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/empty file.png',
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'No tasks available.',
+                    style: AppTextStyles.normal(),
+                  ),
+                ],
+              ),
             ));
           }
           return ListView.builder(

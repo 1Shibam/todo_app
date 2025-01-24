@@ -62,13 +62,13 @@ class CreateTaskDetailsWidget extends ConsumerWidget {
                   description: descController.text);
               ref.invalidate(taskListProvider);
               Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                content: Text('Task added to the database'),
-                duration: Duration(seconds: 1),
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('Task added to list', style: AppTextStyles.normal(color: Colors.white)),
+                duration: const Duration(seconds: 1),
               ));
             },
             decoration: const InputDecoration(
-                labelText: 'Title', hintText: 'eg. cry more'),
+                labelText: 'Description', hintText: 'lol lmao'),
           )
         ],
       ),
