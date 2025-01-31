@@ -16,5 +16,18 @@ class TodosModel {
       this.todoCompleted = false,
       this.todoDeleted = false});
 
-      //convert from Map (for database)
+  //!convert from Map (for database)
+
+  factory TodosModel.fromMap(Map<String, dynamic> map) {
+    return TodosModel(
+        todoID: map['todoID'],
+        todoTitle: map['todoTitle'],
+        todoDesc: map['todoDesc'],
+        todoStartDate: map['todoStartDate'],
+        todoEndDate: map['todoEndDate'],
+        todoCompleted: map['todoCompleted'] == 1,
+        todoDeleted: map['todoDeleted'] == 1);
+  }
+
+  //!convert to map (for database)
 }
