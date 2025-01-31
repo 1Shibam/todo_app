@@ -6,4 +6,7 @@ class TodoRepository {
   TodoRepository(this.dataSource);
 
   Future<List<TodosModel>> fetchTodoList() => dataSource.getTodosList();
+  Future<int> insertTodo(TodosModel todo) => dataSource.createTodo(todo);
+  Future<int> updateTodo(TodosModel todo) => dataSource.updateTodo(todo);
+  Future<int> deleteTodo(int id) => dataSource.deleteTodo(id);
 }
