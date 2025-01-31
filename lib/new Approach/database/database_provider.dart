@@ -17,8 +17,9 @@ final databaseProvider = FutureProvider<Database>((ref) async {
       todoID INTEGER PRIMARY KEY AUTOINCREMENT,
       todoTitle TEXT NOT NULL,
       todoDesc TEXT,
-      todoDate TEXT,
-      todoDone INTEGER DEFAULT 0,
+      todoStartDate TEXT,
+      todoEndDate TEXT,
+      todoCompleted INTEGER DEFAULT 0,
       todoDeleted INTEGER DEFAULT 0
       )'''
       );
