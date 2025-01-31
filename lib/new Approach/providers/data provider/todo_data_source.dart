@@ -18,15 +18,37 @@ class TodoDataSource {
   //! get todo list
 
   Future<List<TodosModel>> getTodosList() async {
-    final maps = await database.query('todoTable');
+    final maps = await database.query('todoTable', );
     return maps.map((data) => TodosModel.fromMap(data)).toList();
   }
 
   //! update a todo
 
   Future<int> updateTodo(TodosModel todo) async {
-    return database.update('todoTable', todo.toMap(),
+    return await database.update('todoTable', todo.toMap(),
         where: 'todoID = ?', whereArgs: [todo.todoID]);
+  }
+  //! Mark todo as completed
+  Future<int> markCompleted(int id) async {
+    return await database.update('todoTable', {'todoCompleted': 1},
+        where: 'todoID = ?', whereArgs: [id]);
+  }
+
+  //! Mark todo as not completed
+  Future<int> markNotCompleted(int id) async {
+    return await database.update('todoTable', {'todoCompleted': 0},
+        where: 'todoID = ?', whereArgs: [id]);
+  }
+
+  //! soft delete a todo(restorable!)
+  Future<int> softDeleteTodo(int id) async {
+    return await database.update('todoTable', {'todoDeleted': 1}, where: 'todoID = ?', whereArgs: [id]);
+  }
+
+  //! Restore a soft-deleted todo
+  Future<int> restoreTodo(int id) async {
+    return await database.update('todoTable', {'todoDeleted': 0},
+        where: 'todoID = ?', whereArgs: [id]);
   }
 
   //! delete a todo
