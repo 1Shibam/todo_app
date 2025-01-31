@@ -12,4 +12,11 @@ class TodoDataSource {
   Future<int> createTodo(TodosModel todo) async {
     return await database.insert('todoTable', todo.toMap());
   }
+
+  //! get todo list
+
+  Future<List<TodosModel>> getTodosList() async {
+    final maps = await database.query('todoTable');
+    return maps.map((data) => TodosModel.fromMap(data)).toList();
+  }
 }
