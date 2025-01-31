@@ -1,4 +1,6 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:todo_app/new%20Approach/database/database_provider.dart';
 import 'package:todo_app/new%20Approach/model/todos_model.dart';
 
 class TodoDataSource {
@@ -19,4 +21,32 @@ class TodoDataSource {
     final maps = await database.query('todoTable');
     return maps.map((data) => TodosModel.fromMap(data)).toList();
   }
+
+  //! update a todo
+
+  Future<int> updateTodo(TodosModel todo) async {
+    return database.update('todoTable', todo.toMap(),
+        where: 'todoID = ?', whereArgs: [todo.todoID]);
+  }
+
+  //! delete a todo
+
+  Future<int> deleteTodo(int id) async {
+    return await database
+        .delete('todoTable', where: 'todoID = ?', whereArgs: [id]);
+  }
 }
+
+final todoDataSourceProvider = Provider<TodoDataSource>((ref) {
+  // Watch the database provider (which returns Future<Database>)
+  final databaseAsync = ref.watch(databaseProvider);
+
+  // Use `.when` to handle the AsyncValue properly
+  return databaseAsync.when(
+      data: (data) {
+        return TodoDataSource(data);
+      },
+      error: (err, stackTrace) =>
+          throw Exception('Error loading database : $err'),
+      loading: () => throw Exception('database still loading!!'));
+});

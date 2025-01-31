@@ -11,8 +11,7 @@ final databaseProvider = FutureProvider<Database>((ref) async {
     pathDirectory,
     version: 2,
     onCreate: (db, version) {
-      return db.execute(
-        '''
+      return db.execute('''
       CREATE TABLE todoTable(
       todoID INTEGER PRIMARY KEY AUTOINCREMENT,
       todoTitle TEXT NOT NULL,
@@ -21,8 +20,7 @@ final databaseProvider = FutureProvider<Database>((ref) async {
       todoEndDate TEXT,
       todoCompleted INTEGER DEFAULT 0,
       todoDeleted INTEGER DEFAULT 0
-      )'''
-      );
+      )''');
     },
   );
 });
