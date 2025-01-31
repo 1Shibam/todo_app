@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/screens/app%20screens/tasks_screen.dart';
-import 'package:todo_app/widgets/widgets_export.dart';
 
 import 'old approach/widgets/app widgets/others/app_text_styles.dart';
+
 
 void main(ref) async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +38,7 @@ class TodoApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const TasksScreen(),
+      home: null
     );
   }
 }
