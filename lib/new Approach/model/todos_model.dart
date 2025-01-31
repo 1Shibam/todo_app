@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class TodosModel {
   final int? todoID;
   final String todoTitle;
@@ -41,4 +42,7 @@ class TodosModel {
       'todoDeleted': todoDeleted ? 1 : 0
     };
   }
+
+  //! copyWith method
+  
 }
