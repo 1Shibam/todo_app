@@ -32,7 +32,13 @@ class TodosModel {
   //!convert to map (for database)
   Map<String, dynamic> toMpa() {
     return {
-      
+      'todoID': todoID,
+      'todoTitle': todoTitle,
+      'todoDesc': todoDesc,
+      'todoStartDate': todoStartDate,
+      'todoEndDate': todoEndDate,
+      'todoCompleted': todoCompleted ? 1 : 0,
+      'todoDeleted': todoDeleted ? 1 : 0
     };
   }
 }
