@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'old approach/widgets/app widgets/others/app_text_styles.dart';
+import 'new Approach/app widgets/others/app_text_styles.dart';
 
 
 void main(ref) async{

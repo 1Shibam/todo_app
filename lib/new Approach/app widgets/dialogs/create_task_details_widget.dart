@@ -3,7 +3,7 @@ import 'package:todo_app/databasae/database_methods.dart';
 
 import 'package:todo_app/providers/data%20providers/provider_exports.dart';
 import 'package:todo_app/providers/data%20providers/task_list_provider.dart';
-import '../../widgets_export.dart';
+import '../../../old approach/widgets/widgets_export.dart';
 
 //Text controllers
 final titleTextControllerProvider = AutoDisposeProvider<TextEditingController>(

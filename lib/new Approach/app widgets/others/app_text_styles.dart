@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/old%20approach/themes/fonts.dart';
+import 'package:todo_app/new%20Approach/themes/fonts.dart';
 
 class AppTextStyles {
   // Normal font style
