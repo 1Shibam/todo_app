@@ -31,7 +31,7 @@ class TodosModel {
   }
 
   //!convert to map (for database)
-  Map<String, dynamic> toMpa() {
+  Map<String, dynamic> toMap() {
     return {
       'todoID': todoID,
       'todoTitle': todoTitle,
