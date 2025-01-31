@@ -44,5 +44,22 @@ class TodosModel {
   }
 
   //! copyWith method
-  
+  TodosModel copyWith({
+    int? todoID,
+    String? todoTitle,
+    String? todoDesc,
+    String? todoStartDate,
+    String? todoEndDate,
+    bool? todoCompleted,
+    bool? todoDeleted,
+  }) {
+    return TodosModel(
+        todoID: todoID ?? this.todoID,
+        todoTitle: todoTitle ?? this.todoTitle,
+        todoDesc: todoDesc ?? this.todoDesc,
+        todoStartDate: todoStartDate ?? this.todoStartDate,
+        todoEndDate: todoEndDate ?? this.todoEndDate,
+        todoCompleted: todoCompleted ?? this.todoCompleted,
+        todoDeleted: todoDeleted ?? this.todoDeleted);
+  }
 }
