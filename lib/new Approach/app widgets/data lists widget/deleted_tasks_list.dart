@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/providers/data%20providers/deleted_task_list_provider.dart';
-import 'package:todo_app/providers/data%20providers/provider_exports.dart';
-import 'package:todo_app/widgets/app%20widgets/others/app_text_styles.dart';
-import 'package:todo_app/widgets/app%20widgets/dialogs/restore_task_alert.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../others/app_text_styles.dart';
 
 class DeletedTasksList extends ConsumerWidget {
   const DeletedTasksList({super.key});
 
+  get taskListAsync => null;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final taskListAsync = ref.watch(deletedTaskListProvider);
-
     return Scaffold(
       body: taskListAsync.when(
         data: (tasks) {
@@ -59,7 +58,7 @@ class DeletedTasksList extends ConsumerWidget {
                         showDialog(
                           context: context,
                           builder: (context) {
-                            return RestoreTaskAlert(task: task);
+                            return const AlertDialog();
                           },
                         );
                       },

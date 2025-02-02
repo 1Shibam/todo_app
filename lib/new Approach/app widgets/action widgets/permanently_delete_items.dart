@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/databasae/database_methods.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:todo_app/providers/data%20providers/provider_exports.dart';
-import 'package:todo_app/widgets/widgets_export.dart';
-
-import '../../../old approach/providers/data providers/deleted_task_list_provider.dart';
+import '../others/app_text_styles.dart';
 
 class DeleteAllPermanentlyButton extends StatelessWidget {
   const DeleteAllPermanentlyButton({
     super.key,
   });
+  
+  get deletedTaskListProvider => null;
 
   @override
   Widget build(BuildContext context) {
@@ -75,4 +74,6 @@ class DeleteAllPermanentlyButton extends StatelessWidget {
               },
             )));
   }
+  
+  void permanentDeleteTask(ref) {}
 }

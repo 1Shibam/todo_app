@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/providers/data%20providers/completed_tasks_list_provider.dart';
-import 'package:todo_app/providers/data%20providers/provider_exports.dart';
-import 'package:todo_app/widgets/widgets_export.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+
+import '../others/app_text_styles.dart';
 
 class CompletedTaskList extends ConsumerWidget {
   const CompletedTaskList({super.key});
+  
+  get completedTasksListProvider => null;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
