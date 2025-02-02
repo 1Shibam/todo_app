@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/new%20Approach/app%20widgets/others/app_text_styles.dart';
+import 'package:todo_app/new%20Approach/model/todos_model.dart';
+
+void showAddTodoDialog(BuildContext context, WidgetRef ref) {
+  final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
+
+  showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: const Text('New Todo'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            controller: titleController,
+            decoration: const InputDecoration(labelText: 'Title'),
+          ),
+          TextField(
+            controller: descriptionController,
+            decoration: const InputDecoration(labelText: 'Description'),
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('Cancel'),
+        ),
+        TextButton(
+          onPressed: () {
+            final newTodo = Todo(
+              title: titleController.text,
+              description: descriptionController.text,
+              date: DateTime.now().toString(),
+            );
+            ref.read(todoListProvider.notifier).addTodo(newTodo);
+            Navigator.pop(context);
+          },
+          child: const Text('Add'),
+        ),
+      ],
+    ),
+  );
+}
