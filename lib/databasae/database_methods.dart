@@ -15,7 +15,7 @@ Future<void> insertTask(WidgetRef ref, String taskTitle,
   await db.insert('tasks',
       {'title': taskTitle, 'desc': description, 'isDone': 0, 'isDeleted': 0},
       conflictAlgorithm: ConflictAlgorithm.replace);
- ref.invalidate(taskListProvider);
+  ref.invalidate(taskListProvider);
   ref.invalidate(deletedTaskListProvider);
   ref.invalidate(completedTasksListProvider);
 
@@ -41,7 +41,7 @@ Future<void> toggleTaskStatus(WidgetRef ref, int taskId) async {
   await db.update('tasks', {'isDone': isDone},
       where: 'id = ?', whereArgs: [taskId]);
 
- ref.invalidate(taskListProvider);
+  ref.invalidate(taskListProvider);
   ref.invalidate(deletedTaskListProvider);
   ref.invalidate(completedTasksListProvider);
 }
@@ -100,11 +100,7 @@ Future<void> permanentDeleteTask(WidgetRef ref) async {
   ref.invalidate(completedTasksListProvider);
 }
 
-
-
-
 //restore deleted tasks
-
 
 Future<void> restoreTask(WidgetRef ref, int taskId) async {
   final db = await ref.read(databaseProvider);
