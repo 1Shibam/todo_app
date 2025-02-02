@@ -24,26 +24,36 @@ class TodoDataSource {
 
   //! update a todo
 
-  Future<int> updateTodo(TodosModel todo) async {
-    return await database.update('todoTable', todo.toMap(),
-        where: 'todoID = ?', whereArgs: [todo.todoID]);
-  }
+ Future<int> updateTodo(TodosModel todo) async {
+  return await database.update(
+    'todoTable', 
+    {
+      'todoTitle': todo.todoTitle,
+      'todoDescription': todo.todoDesc,
+      
+    },
+    where: 'todoID = ?', 
+    whereArgs: [todo.todoID]
+  );
+}
+
   //! Mark todo as completed
   Future<int> markCompleted(int id) async {
     return await database.update('todoTable', {'todoCompleted': 1},
         where: 'todoID = ?', whereArgs: [id]);
   }
 
-  //! Mark todo as not completed
-  Future<int> markNotCompleted(int id) async {
-    return await database.update('todoTable', {'todoCompleted': 0},
-        where: 'todoID = ?', whereArgs: [id]);
-  }
+  //! Todo completion status
+  
+ Future<int> updateCompletionStatus(int id, bool isCompleted) async {
+  return await database.update(
+    'todoTable',
+    {'todoCompleted': isCompleted ? 1 : 0}, // 1 for completed, 0 for not completed
+    where: 'todoID = ?',
+    whereArgs: [id],
+  );
+}
 
-  //! soft delete a todo(restorable!)
-  Future<int> softDeleteTodo(int id) async {
-    return await database.update('todoTable', {'todoDeleted': 1}, where: 'todoID = ?', whereArgs: [id]);
-  }
 
   //! Restore a soft-deleted todo
   Future<int> restoreTodo(int id) async {
