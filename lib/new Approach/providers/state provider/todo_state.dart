@@ -12,4 +12,11 @@ class TodoStateNotifier extends StateNotifier<List<TodosModel>> {
     final todos = await ref.read(todoRepositoryProvider).fetchTodoList();
     state = todos;
   }
+
+  Future<void> addTodo(TodosModel todo) async {
+    await ref.read(todoRepositoryProvider).insertTodo(todo);
+    loadTodos();
+  }
+
+  Future<void> toggleTodo(TodosModel todo) async{}
 }
