@@ -37,14 +37,6 @@ class TodoDataSource {
   );
 }
 
-  //! Mark todo as completed
-  Future<int> markCompleted(int id) async {
-    return await database.update('todoTable', {'todoCompleted': 1},
-        where: 'todoID = ?', whereArgs: [id]);
-  }
-
-  //! Todo completion status
-  
  Future<int> updateCompletionStatus(int id, bool isCompleted) async {
   return await database.update(
     'todoTable',
@@ -54,6 +46,10 @@ class TodoDataSource {
   );
 }
 
+  //! soft delete a todo(restorable!)
+  Future<int> softDeleteTodo(int id) async {
+    return await database.update('todoTable', {'todoDeleted': 1}, where: 'todoID = ?', whereArgs: [id]);
+  }
 
   //! Restore a soft-deleted todo
   Future<int> restoreTodo(int id) async {
