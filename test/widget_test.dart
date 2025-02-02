@@ -7,14 +7,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:todo_app/screens/app%20screens/tasks_screen.dart';
+import 'package:todo_app/new%20Approach/UI/todo_home_screen.dart';
+
 
 
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const TasksScreen());
+    await tester.pumpWidget(const TodoHomeScreen());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
