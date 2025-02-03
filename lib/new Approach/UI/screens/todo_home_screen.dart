@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/new%20Approach/UI/widgets/floating_action_widget.dart';
 import 'package:todo_app/new%20Approach/providers/state%20provider/todo_state.dart';
 
-import '../app widgets/others/app_text_styles.dart';
+import '../../app widgets/others/app_text_styles.dart';
 
 //! this is the Todo home screen!!
 class TodoHomeScreen extends ConsumerWidget {
