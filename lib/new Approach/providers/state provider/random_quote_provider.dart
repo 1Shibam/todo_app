@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 import '../../model/quote_data_model.dart';
 
-final quoteProvider = FutureProvider<String>((ref) async {
+final randomQuoteProvider = FutureProvider<String>((ref) async {
   final prefs = await SharedPreferences.getInstance();
   final currentDate = DateTime.now().toIso8601String().split('T').first; // Get current date in yyyy-MM-dd format
   final storedDate = prefs.getString('quoteDate');
