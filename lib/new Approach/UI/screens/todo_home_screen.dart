@@ -1,32 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/new%20Approach/providers/state%20provider/todo_state.dart';
 
-//! this is the Todo home screen!!
-class TodoHomeScreen extends ConsumerWidget {
+class TodoHomeScreen extends ConsumerStatefulWidget {
   const TodoHomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final todoData = ref.watch(todoListProvider);
-    return todoData.isEmpty
-        ? Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset('assets/images/empty file.png'),
-                const Text('NO todos are added yet!!')
-              ],
-            ),
-          )
-        : ListView.builder(
-            itemCount: todoData.length,
-            itemBuilder: (context, index) {
-              final singleData = todoData[index];
-              return ListTile(
-                title: Text(singleData.todoTitle),
-              );
-            },
-          );
+  ConsumerState<ConsumerStatefulWidget> createState() => _TodoHomeScreenState();
+}
+
+class _TodoHomeScreenState extends ConsumerState<TodoHomeScreen> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
