@@ -32,6 +32,16 @@ Future<List<TodosModel>> getCompletedTodosList() async {
   return maps.map((data) => TodosModel.fromMap(data)).toList();
 }
 
+//! Get Soft Deleted Todos List
+Future<List<TodosModel>> getSoftDeletedTodosList() async {
+  final maps = await database.query(
+    'todoTable',
+    where: 'softDeleted = ?',
+    whereArgs: [1], // Assuming '1' represents soft deleted todos
+  );
+  return maps.map((data) => TodosModel.fromMap(data)).toList();
+}
+
 
 
 
