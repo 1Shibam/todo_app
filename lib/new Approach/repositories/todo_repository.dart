@@ -6,13 +6,26 @@ class TodoRepository {
   final TodoDataSource dataSource;
   TodoRepository(this.dataSource);
 
+  //! Fetch all todos
   Future<List<TodosModel>> fetchTodoList() => dataSource.getTodosList();
+
+  //! Add a new todo
   Future<int> insertTodo(TodosModel todo) => dataSource.createTodo(todo);
+
+  //! Update an existing todo
   Future<int> updateTodo(TodosModel todo) => dataSource.updateTodo(todo);
-  Future<int> setTodoCompletion(int id, bool isCompleted) =>
+
+  //! Toggle completion status
+  Future<int> toggleCompletion(int id, bool isCompleted) =>
       dataSource.updateCompletionStatus(id, isCompleted);
-  Future<int> temporaryDeletion(int id) => dataSource.softDeleteTodo(id);
-  Future<int> restoreDeleted(int id) => dataSource.restoreTodo(id);
+
+  //! Soft delete a todo (restorable)
+  Future<int> softDeleteTodo(int id) => dataSource.softDeleteTodo(id);
+
+  //! Restore a soft-deleted todo
+  Future<int> restoreTodo(int id) => dataSource.restoreTodo(id);
+
+  //! Permanently delete a todo
   Future<int> deleteTodo(int id) => dataSource.deleteTodo(id);
 }
 
