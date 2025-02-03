@@ -22,6 +22,19 @@ class TodoDataSource {
     return maps.map((data) => TodosModel.fromMap(data)).toList();
   }
 
+  //! Get Completed Todos List
+Future<List<TodosModel>> getCompletedTodosList() async {
+  final maps = await database.query(
+    'todoTable',
+    where: 'completed = ?',
+    whereArgs: [1], // Assuming '1' represents completed todos
+  );
+  return maps.map((data) => TodosModel.fromMap(data)).toList();
+}
+
+
+
+
   //! Update Todo Details
   Future<int> updateTodo(TodosModel todo) async {
     return await database.update(
