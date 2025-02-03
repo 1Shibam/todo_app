@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../providers/state provider/random_quote_provider.dart';
 import '../../../themes/app_text_styles.dart';
 
-class TodaysAdvice extends ConsumerWidget {
-  const TodaysAdvice({super.key});
+class DailyAdvice extends ConsumerWidget {
+  const DailyAdvice({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
