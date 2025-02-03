@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/new%20Approach/UI/widgets/floating_action_widget.dart';
 import 'package:todo_app/new%20Approach/providers/state%20provider/todo_state.dart';
 
 import '../app widgets/others/app_text_styles.dart';
@@ -19,14 +20,7 @@ class TodoHomeScreen extends ConsumerWidget {
             style: AppTextStyles.bold(),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.grey,
-          child: const Icon(
-            Icons.add_task,
-            size: 32,
-          ),
-        ),
+        floatingActionButton: const FloatingActionWidget(),
         body: todoData.isEmpty
             ? Center(
                 child: Column(
@@ -35,7 +29,7 @@ class TodoHomeScreen extends ConsumerWidget {
                     Image.asset('assets/images/empty file.png'),
                     const Text('NO todos are added yet!!')
                   ],
-                ),
+                ),  
               )
             : ListView.builder(
                 itemCount: todoData.length,
