@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/new%20Approach/UI/widgets/lists_widgets/todo_list.dart';
 import 'package:todo_app/new%20Approach/UI/widgets/other_widgets/daily_advice.dart';
 import 'package:todo_app/new%20Approach/themes/app_text_styles.dart';
 
@@ -32,13 +33,11 @@ class _TodoHomeScreenState extends ConsumerState<TodoHomeScreen> {
             const SizedBox(
               height: 12,
             ),
-            
             DefaultTabController(
               length: 3, // Three tabs
               child: Expanded(
                 child: Column(
                   children: [
-                   
                     TabBar(
                       labelStyle: AppTextStyles.bold(fontSize: 16),
                       indicatorColor: Colors.blue,
@@ -70,19 +69,14 @@ class _TodoHomeScreenState extends ConsumerState<TodoHomeScreen> {
                       ],
                     ),
                     const SizedBox(height: 12),
-               
                     const Expanded(
                       child: TabBarView(
                         children: [
-                          Center(
-                              child: Text(
-                                  'All Tasks')), 
-                          Center(
-                              child: Text(
-                                  'Completed Tasks')), 
-                          Center(
-                              child: Text(
-                                  'Deleted Tasks')), 
+                          Stack(
+                            children: [TodosList()],
+                          ),
+                          Center(child: Text('Completed Tasks')),
+                          Center(child: Text('Deleted Tasks')),
                         ],
                       ),
                     ),
