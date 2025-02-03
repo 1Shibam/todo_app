@@ -23,8 +23,21 @@ class _TodoHomeScreenState extends ConsumerState<TodoHomeScreen> {
             style: AppTextStyles.bold(fontSize: 36),
           ),
         ),
-        body: const Column(
-          children: [DailyAdvice()],
+        body: Column(
+          children: [
+            const SizedBox(
+              height: 24,
+            ),
+            const DailyAdvice(),
+            Text(
+              'Tasks Will show up Below - ',
+              style: AppTextStyles.bold(),
+            ),
+            const SizedBox(
+              height: 12,
+            ),
+            
+          ],
         ),
       ),
     );
