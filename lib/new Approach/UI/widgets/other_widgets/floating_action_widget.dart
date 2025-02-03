@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/app%20widgets/others/app_text_styles.dart';
+import 'package:todo_app/new%20Approach/themes/app_text_styles.dart';
+
 
 class FloatingActionWidget extends ConsumerStatefulWidget {
   const FloatingActionWidget({super.key});
