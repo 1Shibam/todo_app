@@ -7,12 +7,14 @@ class AppTextStyles {
   static TextStyle normal({
     double fontSize = 20.0,
     Color color = Colors.black,
+    
   }) {
     return TextStyle(
       fontFamily: font,
       fontSize: fontSize,
       color: color,
       fontWeight: FontWeight.bold,
+      
     );
   }
 
