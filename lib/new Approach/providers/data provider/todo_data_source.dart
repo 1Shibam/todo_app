@@ -4,77 +4,69 @@ import 'package:todo_app/new%20Approach/database/database_provider.dart';
 import 'package:todo_app/new%20Approach/model/todos_model.dart';
 
 class TodoDataSource {
-  //instance of database
+  // Instance of database
   final Database database;
 
   TodoDataSource(this.database);
 
-  //! Todo creation
-
+  //! Add Todo
   Future<int> createTodo(TodosModel todo) async {
     return await database.insert('todoTable', todo.toMap());
   }
 
-  //! get todo list
-
+  //! Get Todos List
   Future<List<TodosModel>> getTodosList() async {
-    final maps = await database.query('todoTable', );
+    final maps = await database.query('todoTable');
     return maps.map((data) => TodosModel.fromMap(data)).toList();
   }
 
-  //! update a todo
+  //! Update Todo Details
+  Future<int> updateTodo(TodosModel todo) async {
+    return await database.update(
+      'todoTable',
+      {
+        'todoTitle': todo.todoTitle,
+        'todoDescription': todo.todoDesc,
+        'startTime': todo.todoStartDate,
+        'endTime': todo.todoEndDate,
+      },
+      where: 'todoID = ?',
+      whereArgs: [todo.todoID],
+    );
+  }
 
- Future<int> updateTodo(TodosModel todo) async {
-  return await database.update(
-    'todoTable', 
-    {
-      'todoTitle': todo.todoTitle,
-      'todoDescription': todo.todoDesc,
-      
-    },
-    where: 'todoID = ?', 
-    whereArgs: [todo.todoID]
-  );
-}
+  //! Toggle Completion Status
+  Future<int> updateCompletionStatus(int id, bool isCompleted) async {
+    return await database.update(
+      'todoTable',
+      {'todoCompleted': isCompleted ? 1 : 0},
+      where: 'todoID = ?',
+      whereArgs: [id],
+    );
+  }
 
- Future<int> updateCompletionStatus(int id, bool isCompleted) async {
-  return await database.update(
-    'todoTable',
-    {'todoCompleted': isCompleted ? 1 : 0}, // 1 for completed, 0 for not completed
-    where: 'todoID = ?',
-    whereArgs: [id],
-  );
-}
-
-  //! soft delete a todo(restorable!)
+  //! Soft Delete Todo (Restorable)
   Future<int> softDeleteTodo(int id) async {
     return await database.update('todoTable', {'todoDeleted': 1}, where: 'todoID = ?', whereArgs: [id]);
   }
 
-  //! Restore a soft-deleted todo
+  //! Restore Soft-Deleted Todo
   Future<int> restoreTodo(int id) async {
-    return await database.update('todoTable', {'todoDeleted': 0},
-        where: 'todoID = ?', whereArgs: [id]);
+    return await database.update('todoTable', {'todoDeleted': 0}, where: 'todoID = ?', whereArgs: [id]);
   }
 
-  //! delete a todo
-
+  //! Permanent Delete Todo
   Future<int> deleteTodo(int id) async {
-    return await database
-        .delete('todoTable', where: 'todoID = ?', whereArgs: [id]);
+    return await database.delete('todoTable', where: 'todoID = ?', whereArgs: [id]);
   }
 }
 
 final todoDataSourceProvider = Provider<TodoDataSource>((ref) {
-  // Watch the database provider (which returns Future<Database>)
   final databaseAsync = ref.watch(databaseProvider);
 
-  // Use `.when` to handle the AsyncValue properly
   return databaseAsync.when(
-      data: (data) {
-        return TodoDataSource(data);
-      },
-      error: (err, stackTrace) =>
-          throw Exception('Error loading database : $err'),
-      loading: () => throw Exception('database still loading!!'));
+    data: (data) => TodoDataSource(data),
+    error: (err, stackTrace) => throw Exception('Error loading database: $err'),
+    loading: () => throw Exception('Database still loading!'),
+  );
 });
