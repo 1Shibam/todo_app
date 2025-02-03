@@ -2,6 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/new%20Approach/model/todos_model.dart';
 import 'package:todo_app/new%20Approach/repositories/todo_repository.dart';
 
+
+//! this is the state provider!!
 final todoListProvider =
     StateNotifierProvider<TodoStateNotifier, List<TodosModel>>(
   (ref) => TodoStateNotifier(ref),
