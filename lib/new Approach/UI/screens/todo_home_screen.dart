@@ -4,6 +4,8 @@ import 'package:todo_app/new%20Approach/UI/widgets/lists_widgets/todo_list.dart'
 import 'package:todo_app/new%20Approach/UI/widgets/other_widgets/daily_advice.dart';
 import 'package:todo_app/new%20Approach/themes/app_text_styles.dart';
 
+import '../widgets/other_widgets/floating_action_widget.dart';
+
 class TodoHomeScreen extends ConsumerStatefulWidget {
   const TodoHomeScreen({super.key});
 
@@ -73,7 +75,15 @@ class _TodoHomeScreenState extends ConsumerState<TodoHomeScreen> {
                       child: TabBarView(
                         children: [
                           Stack(
-                            children: [TodosList()],
+                            children: [
+                              TodosList(),
+                              Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(28.0),
+                                    child: FloatingActionWidget(),
+                                  ))
+                            ],
                           ),
                           Center(child: Text('Completed Tasks')),
                           Center(child: Text('Deleted Tasks')),
