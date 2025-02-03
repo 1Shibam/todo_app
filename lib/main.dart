@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/new%20Approach/UI/screens/todo_home_screen.dart';
 
-import 'new Approach/app widgets/others/app_text_styles.dart';
+import 'app widgets/others/app_text_styles.dart';
 
 void main(ref) async {
   WidgetsFlutterBinding.ensureInitialized();

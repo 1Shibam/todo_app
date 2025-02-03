@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../app widgets/others/app_text_styles.dart';
+import '../../../../app widgets/others/app_text_styles.dart';
 import '../../../providers/state provider/random_quote_provider.dart';
 
 class TodaysAdvice extends ConsumerWidget {
