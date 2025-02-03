@@ -9,26 +9,53 @@ final todoListProvider =
 
 class TodoStateNotifier extends StateNotifier<List<TodosModel>> {
   final Ref ref;
+
   TodoStateNotifier(this.ref) : super([]) {
     loadTodos();
-  } //!initial state
+  }
 
+  //! Load todos from the database
   Future<void> loadTodos() async {
     final todos = await ref.read(todoRepositoryProvider).fetchTodoList();
     state = todos;
   }
 
+  //! Add a new todo
   Future<void> addTodo(TodosModel todo) async {
     await ref.read(todoRepositoryProvider).insertTodo(todo);
     loadTodos();
   }
 
+  //! Update an existing todo
+  Future<void> updateTodo(TodosModel updatedTodo) async {
+    await ref.read(todoRepositoryProvider).updateTodo(updatedTodo);
+    loadTodos();
+  }
+
+  //! Toggle completion status
+  Future<void> toggleCompletion(TodosModel todo) async {
+    final newStatus = !todo.todoCompleted;
+    await ref
+        .read(todoRepositoryProvider)
+        .toggleCompletion(todo.todoID!, newStatus);
+    loadTodos();
+  }
+
+  //! Soft delete a todo (Restorable)
+  Future<void> tempDeleteTodo(int id) async {
+    await ref.read(todoRepositoryProvider).softDeleteTodo(id);
+    loadTodos();
+  }
+
+  //! Restore a soft-deleted todo
+  Future<void> restoreTodo(int id) async {
+    await ref.read(todoRepositoryProvider).restoreTodo(id);
+    loadTodos();
+  }
+
+  //! Permanently delete a todo
   Future<void> deleteTodo(int id) async {
     await ref.read(todoRepositoryProvider).deleteTodo(id);
     loadTodos();
   }
-
-  Future<void> tempDeleteTodo(int id) async {}
-
-  Future<void> toggleTodo(TodosModel todo) async {}
 }
