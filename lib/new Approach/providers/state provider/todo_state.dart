@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/new%20Approach/model/todos_model.dart';
 import 'package:todo_app/new%20Approach/repositories/todo_repository.dart';
 
-
 //! this is the state provider!!
 final todoListProvider =
     StateNotifierProvider<TodoStateNotifier, List<TodosModel>>(
@@ -20,6 +19,20 @@ class TodoStateNotifier extends StateNotifier<List<TodosModel>> {
   Future<void> loadTodos() async {
     final todos = await ref.read(todoRepositoryProvider).fetchTodoList();
     state = todos;
+  }
+
+  //! Load completed Todos from the database
+  Future<void> loadCompletedTodos() async {
+    final completeTodos =
+        await ref.read(todoRepositoryProvider).fetchOnlyCompletedList();
+    state = completeTodos;
+  }
+
+  //! Load Temporary deleted Todos from the database
+  Future<void> loadTemporaryDeletedTodos() async {
+    final tempDeletedTodos =
+        await ref.read(todoRepositoryProvider).fetchTemporaryDeletedTodos();
+    state = tempDeletedTodos;
   }
 
   //! Add a new todo
