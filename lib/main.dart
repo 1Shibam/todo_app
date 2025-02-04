@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/new%20Approach/UI/screens/todo_home_screen.dart';
+
+import 'package:todo_app/new%20Approach/UI/screens/todo_splash_screen.dart';
 
 import 'new Approach/themes/app_text_styles.dart';
 
@@ -37,6 +38,6 @@ class TodoApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const TodoHomeScreen());
+        home: const TodoSplashScreen());
   }
 }
