@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:todo_app/themes/app_text_styles.dart';
 import 'package:todo_app/UI/widgets/widgets_exports.dart';
 
-class TodoHomeScreen extends ConsumerStatefulWidget {
+class TodoHomeScreen extends StatelessWidget {
   const TodoHomeScreen({super.key});
 
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _TodoHomeScreenState();
-}
-
-class _TodoHomeScreenState extends ConsumerState<TodoHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,16 +20,12 @@ class _TodoHomeScreenState extends ConsumerState<TodoHomeScreen> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 24,
-            ),
+            const SizedBox(height: 24),
             const DailyAdvice(),
-            const SizedBox(
-              height: 12,
-            ),
+            const SizedBox(height: 12),
             Flexible(
               child: DefaultTabController(
-                length: 3, // Three tabs
+                length: 3,
                 child: Column(
                   children: [
                     TabBar(
@@ -48,24 +37,15 @@ class _TodoHomeScreenState extends ConsumerState<TodoHomeScreen> {
                       tabs: const [
                         Tab(
                           text: 'All Tasks',
-                          icon: Icon(
-                            Icons.task,
-                            size: 32,
-                          ),
+                          icon: Icon(Icons.task, size: 32),
                         ),
                         Tab(
                           text: 'Completed',
-                          icon: Icon(
-                            Icons.check,
-                            size: 32,
-                          ),
+                          icon: Icon(Icons.check, size: 32),
                         ),
                         Tab(
                           text: 'Deleted',
-                          icon: Icon(
-                            Icons.delete,
-                            size: 32,
-                          ),
+                          icon: Icon(Icons.delete, size: 32),
                         ),
                       ],
                     ),
@@ -77,34 +57,35 @@ class _TodoHomeScreenState extends ConsumerState<TodoHomeScreen> {
                             children: [
                               TodosList(),
                               Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: Padding(
-                                    padding: EdgeInsets.all(28.0),
-                                    child: FloatingActionWidget(),
-                                  ))
+                                alignment: Alignment.bottomRight,
+                                child: Padding(
+                                  padding: EdgeInsets.all(28.0),
+                                  child: FloatingActionWidget(),
+                                ),
+                              ),
                             ],
                           ),
                           Stack(
                             children: [
                               CompletedTodosList(),
                               Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: Padding(
-                                    padding: EdgeInsets.all(28.0),
-                                  ))
+                                alignment: Alignment.bottomRight,
+                                child: Padding(padding: EdgeInsets.all(28.0)),
+                              ),
                             ],
                           ),
                           Stack(
                             children: [
                               DeletedTodosList(),
                               Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: Padding(
-                                    padding: EdgeInsets.all(28.0),
-                                    child: DeleteAllTodosFloatingButton(),
-                                  ))
+                                alignment: Alignment.bottomRight,
+                                child: Padding(
+                                  padding: EdgeInsets.all(28.0),
+                                  child: DeleteAllTodosFloatingButton(),
+                                ),
+                              ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
