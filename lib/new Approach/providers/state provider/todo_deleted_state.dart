@@ -8,12 +8,14 @@ final deletedTodoListProvider =
 
 class TodoDeletedStateNotifier extends StateNotifier<List<TodosModel>> {
   final Ref ref;
-  TodoDeletedStateNotifier(this.ref) : super([]);
+  TodoDeletedStateNotifier(this.ref) : super([]) {
+    loadTemporaryDeletedTodos();
+  }
 
   Future<void> loadTemporaryDeletedTodos() async {
+    print('this got triggered!!!');
     final tempDeletedTodos =
         await ref.read(todoRepositoryProvider).fetchTemporaryDeletedTodos();
     state = tempDeletedTodos;
   }
-  
 }
