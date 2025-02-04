@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/new%20Approach/UI/widgets/lists_widgets/completed_todo_list.dart';
 import 'package:todo_app/new%20Approach/UI/widgets/lists_widgets/deleted_todo_list.dart';
 import 'package:todo_app/new%20Approach/UI/widgets/lists_widgets/todo_list.dart';
 import 'package:todo_app/new%20Approach/UI/widgets/other_widgets/daily_advice.dart';
@@ -87,17 +88,27 @@ class _TodoHomeScreenState extends ConsumerState<TodoHomeScreen> {
                                   ))
                             ],
                           ),
-                          Center(child: Text('Completed Tasks')),
-                          Stack(children: [
-                            DeletedTodosList(),
+                          Stack(
+                            children: [
+                              CompletedTodosList(),
+                              Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(28.0),
+                                  ))
+                            ],
+                          ),
+                          Stack(
+                            children: [
+                              DeletedTodosList(),
                               Align(
                                   alignment: Alignment.bottomRight,
                                   child: Padding(
                                     padding: EdgeInsets.all(28.0),
                                     child: FloatingActionWidget(),
                                   ))
-
-                          ],)
+                            ],
+                          )
                         ],
                       ),
                     ),
