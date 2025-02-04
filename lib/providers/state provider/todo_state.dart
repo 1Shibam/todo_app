@@ -68,6 +68,8 @@ class TodoStateNotifier extends StateNotifier<List<TodosModel>> {
   //! Restore a soft-deleted todo
   Future<void> restoreTodo(int id) async {
     await ref.read(todoRepositoryProvider).restoreTodo(id);
+    ref.read(deletedTodoListProvider.notifier).loadTemporaryDeletedTodos();
+    
     loadTodos();
   }
 
