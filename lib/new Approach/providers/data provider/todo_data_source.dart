@@ -3,7 +3,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:todo_app/new%20Approach/database/database_provider.dart';
 import 'package:todo_app/new%20Approach/model/todos_model.dart';
 
-
 //! This the the Data source!!
 class TodoDataSource {
   // Instance of database
@@ -16,39 +15,31 @@ class TodoDataSource {
     return await database.insert('todoTable', todo.toMap());
   }
 
-  //! Get Active Todos List (Excluding Soft-Deleted)
-Future<List<TodosModel>> getTodosList() async {
-  final maps = await database.query(
-    'todoTable',
-    where: 'todoDeleted = ?',
-    whereArgs: [0], // Fetch only active todos (not soft deleted)
-  );
-  return maps.map((data) => TodosModel.fromMap(data)).toList();
-}
-
+  //! Get Todos List
+  Future<List<TodosModel>> getTodosList() async {
+    final maps = await database.query('todoTable');
+    return maps.map((data) => TodosModel.fromMap(data)).toList();
+  }
 
   //! Get Completed Todos List
-Future<List<TodosModel>> getCompletedTodosList() async {
-  final maps = await database.query(
-    'todoTable',
-    where: 'completed = ?',
-    whereArgs: [1], // Assuming '1' represents completed todos
-  );
-  return maps.map((data) => TodosModel.fromMap(data)).toList();
-}
+  Future<List<TodosModel>> getCompletedTodosList() async {
+    final maps = await database.query(
+      'todoTable',
+      where: 'completed = ?',
+      whereArgs: [1], // Assuming '1' represents completed todos
+    );
+    return maps.map((data) => TodosModel.fromMap(data)).toList();
+  }
 
 //! Get Soft Deleted Todos List
-Future<List<TodosModel>> getSoftDeletedTodosList() async {
-  final maps = await database.query(
-    'todoTable',
-    where: 'softDeleted = ?',
-    whereArgs: [1], // Assuming '1' represents soft deleted todos
-  );
-  return maps.map((data) => TodosModel.fromMap(data)).toList();
-}
-
-
-
+  Future<List<TodosModel>> getSoftDeletedTodosList() async {
+    final maps = await database.query(
+      'todoTable',
+      where: 'softDeleted = ?',
+      whereArgs: [1], // Assuming '1' represents soft deleted todos
+    );
+    return maps.map((data) => TodosModel.fromMap(data)).toList();
+  }
 
   //! Update Todo Details
   Future<int> updateTodo(TodosModel todo) async {
@@ -77,17 +68,20 @@ Future<List<TodosModel>> getSoftDeletedTodosList() async {
 
   //! Soft Delete Todo (Restorable)
   Future<int> softDeleteTodo(int id) async {
-    return await database.update('todoTable', {'todoDeleted': 1}, where: 'todoID = ?', whereArgs: [id]);
+    return await database.update('todoTable', {'todoDeleted': 1},
+        where: 'todoID = ?', whereArgs: [id]);
   }
 
   //! Restore Soft-Deleted Todo
   Future<int> restoreTodo(int id) async {
-    return await database.update('todoTable', {'todoDeleted': 0}, where: 'todoID = ?', whereArgs: [id]);
+    return await database.update('todoTable', {'todoDeleted': 0},
+        where: 'todoID = ?', whereArgs: [id]);
   }
 
   //! Permanent Delete Todo
   Future<int> deleteTodo(int id) async {
-    return await database.delete('todoTable', where: 'todoID = ?', whereArgs: [id]);
+    return await database
+        .delete('todoTable', where: 'todoID = ?', whereArgs: [id]);
   }
 }
 

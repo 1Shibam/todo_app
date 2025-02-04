@@ -18,9 +18,9 @@ class DeletedTodosList extends ConsumerWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/images/empty file.png'),
+                  Image.asset('assets/images/recycle-bin-full-svgrepo-com.png'),
                   Text(
-                    'No todos are added yet',
+                    'No todos are Deleted yet',
                     style: AppTextStyles.bold(),
                     textAlign: TextAlign.center,
                   )
@@ -57,7 +57,8 @@ class DeletedTodosList extends ConsumerWidget {
                             showDialog(
                               context: context,
                               builder: (context) {
-                                return RestoreTaskDialog(id: singleData.todoID!);
+                                return RestoreTaskDialog(
+                                    id: singleData.todoID!);
                               },
                             );
                           },
