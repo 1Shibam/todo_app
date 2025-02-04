@@ -6,7 +6,7 @@ import 'package:todo_app/new%20Approach/UI/widgets/lists_widgets/todo_list.dart'
 import 'package:todo_app/new%20Approach/UI/widgets/other_widgets/daily_advice.dart';
 import 'package:todo_app/new%20Approach/themes/app_text_styles.dart';
 
-import '../widgets/other_widgets/floating_action_widget.dart';
+import '../widgets/buttons/floating_action_widget.dart';
 
 class TodoHomeScreen extends ConsumerStatefulWidget {
   const TodoHomeScreen({super.key});
