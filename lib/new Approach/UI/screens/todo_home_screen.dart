@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/new%20Approach/UI/widgets/buttons/delete_all_todos_floating_button.dart';
 import 'package:todo_app/new%20Approach/UI/widgets/lists_widgets/completed_todo_list.dart';
 import 'package:todo_app/new%20Approach/UI/widgets/lists_widgets/deleted_todo_list.dart';
 import 'package:todo_app/new%20Approach/UI/widgets/lists_widgets/todo_list.dart';
@@ -105,7 +106,7 @@ class _TodoHomeScreenState extends ConsumerState<TodoHomeScreen> {
                                   alignment: Alignment.bottomRight,
                                   child: Padding(
                                     padding: EdgeInsets.all(28.0),
-                                    child: FloatingActionWidget(),
+                                    child: DeleteAllTodosFloatingButton(),
                                   ))
                             ],
                           )
