@@ -40,6 +40,8 @@ class TodoStateNotifier extends StateNotifier<List<TodosModel>> {
   //! Update an existing todo
   Future<void> updateTodo(TodosModel updatedTodo) async {
     await ref.read(todoRepositoryProvider).updateTodo(updatedTodo);
+    ref.read(completedTodosListProvider.notifier).loadCompletedTodos();
+    ref.read(deletedTodoListProvider.notifier).loadTemporaryDeletedTodos();
     loadTodos();
   }
 
