@@ -36,7 +36,7 @@ class TodoRepository {
   Future<int> restoreTodo(int id) => dataSource.restoreTodo(id);
 
   //! Permanently delete a todo
-  Future<int> deleteTodo(int id) => dataSource.deleteTodo(id);
+  Future<int> deleteTodo(int id) => dataSource.deleteTheTodo(id);
 }
 
 final todoRepositoryProvider = Provider<TodoRepository>((ref) {
