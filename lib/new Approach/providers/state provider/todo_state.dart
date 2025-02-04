@@ -1,6 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/new%20Approach/model/todos_model.dart';
+import 'package:todo_app/new%20Approach/providers/state%20provider/todo_deleted_state.dart';
 import 'package:todo_app/new%20Approach/repositories/todo_repository.dart';
+
+import 'todo_completed_state.dart';
 
 //! this is the state provider!!
 final todoListProvider =
@@ -19,13 +22,6 @@ class TodoStateNotifier extends StateNotifier<List<TodosModel>> {
   Future<void> loadTodos() async {
     final todos = await ref.read(todoRepositoryProvider).fetchTodoList();
     state = todos;
-  }
-
-  //! Load completed Todos from the database
-  Future<void> loadCompletedTodos() async {
-    final completeTodos =
-        await ref.read(todoRepositoryProvider).fetchOnlyCompletedList();
-    state = completeTodos;
   }
 
   //! Load Temporary deleted Todos from the database
@@ -53,12 +49,17 @@ class TodoStateNotifier extends StateNotifier<List<TodosModel>> {
     await ref
         .read(todoRepositoryProvider)
         .toggleCompletion(todo.todoID!, newStatus);
+    // Trigger reload for completed todos after updating the status
+    ref.read(completedTodosListProvider.notifier).loadCompletedTodos();
     loadTodos();
   }
 
   //! Soft delete a todo (Restorable)
   Future<void> tempDeleteTodo(int id) async {
     await ref.read(todoRepositoryProvider).softDeleteTodo(id);
+    //trigger reload for deleted list
+    print('reload of deleted list has been triggered!');
+    ref.read(deletedTodoListProvider.notifier).loadTemporaryDeletedTodos();
     loadTodos();
   }
 
