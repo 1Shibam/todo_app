@@ -74,7 +74,7 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
                       onFieldSubmitted: (value) {},
                       decoration: const InputDecoration(
                           labelText: 'Title', hintText: 'eg. cry more'),
-                          validator: (value) {
+                      validator: (value) {
                         if (value == null || value.trim().isEmpty) {
                           return 'Title cannot be empty';
                         }
@@ -98,7 +98,31 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
                       },
                       decoration: const InputDecoration(
                           labelText: 'Description', hintText: 'lol lmao'),
-                    )
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: startDateController,
+                      style: AppTextStyles.normal(),
+                      decoration: const InputDecoration(
+                        labelText: 'Start Date',
+                        hintText: 'Select start date',
+                        suffixIcon: Icon(Icons.calendar_today),
+                      ),
+                      readOnly: true,
+                      onTap: () => selectDate(context, startDateController),
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: endDateController,
+                      style: AppTextStyles.normal(),
+                      decoration: const InputDecoration(
+                        labelText: 'End Date',
+                        hintText: 'Select end date',
+                        suffixIcon: Icon(Icons.calendar_today),
+                      ),
+                      readOnly: true,
+                      onTap: () => selectDate(context, endDateController),
+                    ),
                   ],
                 ),
               ),
@@ -115,13 +139,16 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Save input to the state
-
-                    Navigator.pop(context);
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text('Task added to the database'),
-                      duration: Duration(seconds: 1),
-                    ));
+                    if (formKey.currentState!.validate()) {
+                      // Validate form
+                      Navigator.pop(context);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Task added to the database'),
+                          duration: Duration(seconds: 1),
+                        ),
+                      );
+                    }
                   },
                   child: Text(
                     'Submit',
