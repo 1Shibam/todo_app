@@ -29,11 +29,7 @@ class TodoStateNotifier extends StateNotifier<List<TodosModel>> {
   }
 
   //! Load Temporary deleted Todos from the database
-  Future<void> loadTemporaryDeletedTodos() async {
-    final tempDeletedTodos =
-        await ref.read(todoRepositoryProvider).fetchTemporaryDeletedTodos();
-    state = tempDeletedTodos;
-  }
+  
 
   //! Add a new todo
   Future<void> addTodo(TodosModel todo) async {
