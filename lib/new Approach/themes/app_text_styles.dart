@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/new%20Approach/themes/fonts.dart';
 
-
 class AppTextStyles {
   // Normal font style
   static TextStyle normal({
-    double fontSize = 20.0,
+    double fontSize = 16.0,
     Color color = Colors.black,
-    
   }) {
     return TextStyle(
       fontFamily: font,
       fontSize: fontSize,
       color: color,
-      fontWeight: FontWeight.bold,
-      
     );
   }
 
