@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/new%20Approach/providers/state%20provider/todo_state.dart';
-import 'package:todo_app/new%20Approach/themes/app_text_styles.dart';
+import 'package:todo_app/providers/state%20provider/todo_state.dart';
+import 'package:todo_app/themes/app_text_styles.dart';
 
-class DeleteTaskDialog extends ConsumerWidget {
-  const DeleteTaskDialog({super.key, required this.id});
-  final int id;
+class DeleteAllTodosAlertDialog extends ConsumerWidget {
+  const DeleteAllTodosAlertDialog({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AlertDialog(
       title: Text('Delete Task!?', style: AppTextStyles.bold()),
       content: Text(
-        'Are you sure you want to move this to recycle bin!!?',
+        'Are you sure you want to all the tasks permanently!?',
         style: AppTextStyles.normal(color: Colors.red),
       ),
       actions: [
@@ -23,7 +22,7 @@ class DeleteTaskDialog extends ConsumerWidget {
             child: Text('Cancel', style: AppTextStyles.normal())),
         TextButton(
             onPressed: () {
-              ref.read(todoListProvider.notifier).tempDeleteTodo(id);
+              ref.read(todoListProvider.notifier).destroyAllTodo();
               Navigator.pop(context);
             },
             child: Container(

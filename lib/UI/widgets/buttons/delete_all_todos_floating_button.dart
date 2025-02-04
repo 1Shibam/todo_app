@@ -14,7 +14,7 @@ class DeleteAllTodosFloatingButton extends ConsumerWidget {
         showDialog(
           context: context,
           builder: (context) {
-            return DeleteAllTodosAlertDialog();
+            return const DeleteAllTodosAlertDialog();
           },
         );
       },

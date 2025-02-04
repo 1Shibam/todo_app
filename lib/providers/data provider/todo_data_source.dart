@@ -2,8 +2,8 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:todo_app/new%20Approach/database/database_provider.dart';
-import 'package:todo_app/new%20Approach/model/todos_model.dart';
+import 'package:todo_app/database/database_provider.dart';
+import 'package:todo_app/model/todos_model.dart';
 
 //! This the the Data source!!
 class TodoDataSource {

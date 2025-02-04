@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/new%20Approach/UI/widgets/buttons/delete_all_todos_floating_button.dart';
-import 'package:todo_app/new%20Approach/UI/widgets/lists_widgets/completed_todo_list.dart';
-import 'package:todo_app/new%20Approach/UI/widgets/lists_widgets/deleted_todo_list.dart';
-import 'package:todo_app/new%20Approach/UI/widgets/lists_widgets/todo_list.dart';
-import 'package:todo_app/new%20Approach/UI/widgets/other_widgets/daily_advice.dart';
-import 'package:todo_app/new%20Approach/themes/app_text_styles.dart';
+import 'package:todo_app/UI/widgets/buttons/delete_all_todos_floating_button.dart';
+import 'package:todo_app/UI/widgets/lists_widgets/completed_todo_list.dart';
+import 'package:todo_app/UI/widgets/lists_widgets/deleted_todo_list.dart';
+import 'package:todo_app/UI/widgets/lists_widgets/todo_list.dart';
+import 'package:todo_app/UI/widgets/other_widgets/daily_advice.dart';
+import 'package:todo_app/themes/app_text_styles.dart';
 
 import '../widgets/buttons/floating_action_widget.dart';
 

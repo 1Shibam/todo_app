@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/new%20Approach/model/todos_model.dart';
-import 'package:todo_app/new%20Approach/providers/data%20provider/todo_data_source.dart';
+import 'package:todo_app/model/todos_model.dart';
+import 'package:todo_app/providers/data%20provider/todo_data_source.dart';
 
 //! This is the todo repository!!
 class TodoRepository {

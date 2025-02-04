@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/new%20Approach/providers/state%20provider/todo_state.dart';
-import 'package:todo_app/new%20Approach/themes/app_text_styles.dart';
+import 'package:todo_app/providers/state%20provider/todo_state.dart';
+import 'package:todo_app/themes/app_text_styles.dart';
 
 class RestoreTaskDialog extends ConsumerWidget {
   const RestoreTaskDialog({super.key, required this.id});

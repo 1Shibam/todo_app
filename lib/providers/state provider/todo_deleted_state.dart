@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/new%20Approach/model/todos_model.dart';
-import 'package:todo_app/new%20Approach/repositories/todo_repository.dart';
+import 'package:todo_app/model/todos_model.dart';
+import 'package:todo_app/repositories/todo_repository.dart';
 
 final deletedTodoListProvider =
     StateNotifierProvider<TodoDeletedStateNotifier, List<TodosModel>>(
@@ -13,7 +13,7 @@ class TodoDeletedStateNotifier extends StateNotifier<List<TodosModel>> {
   }
 
   Future<void> loadTemporaryDeletedTodos() async {
-    print('this got triggered!!!');
+    // print('this got triggered!!!');
     final tempDeletedTodos =
         await ref.read(todoRepositoryProvider).fetchTemporaryDeletedTodos();
     state = tempDeletedTodos;

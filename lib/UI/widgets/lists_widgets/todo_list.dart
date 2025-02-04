@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/new%20Approach/UI/widgets/dialogs/delete_task_permanently_dialog.dart';
-import 'package:todo_app/new%20Approach/UI/widgets/dialogs/restore_task_dialog.dart';
-import 'package:todo_app/new%20Approach/providers/state%20provider/todo_deleted_state.dart';
+import 'package:todo_app/UI/widgets/dialogs/delete_task_dialog.dart';
+import 'package:todo_app/providers/state%20provider/todo_state.dart';
+import 'package:todo_app/themes/app_text_styles.dart';
 
-import 'package:todo_app/new%20Approach/themes/app_text_styles.dart';
-
-class DeletedTodosList extends ConsumerWidget {
-  const DeletedTodosList({super.key});
+class TodosList extends ConsumerWidget {
+  const TodosList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final todoData = ref.watch(deletedTodoListProvider);
+    final todoData = ref.watch(todoListProvider);
     return todoData.isEmpty
         ? Center(
             child: Center(
@@ -19,9 +17,9 @@ class DeletedTodosList extends ConsumerWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/images/recycle-bin-full-svgrepo-com.png'),
+                  Image.asset('assets/images/empty file.png'),
                   Text(
-                    'No todos are Deleted yet',
+                    'No todos are added yet',
                     style: AppTextStyles.bold(),
                     textAlign: TextAlign.center,
                   )
@@ -38,40 +36,37 @@ class DeletedTodosList extends ConsumerWidget {
                 child: ListTile(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
-                  tileColor: Colors.red.withOpacity(0.3),
+                  tileColor: singleData.todoCompleted
+                      ? Colors.lightGreen.withOpacity(0.3)
+                      : Colors.lightBlue.withOpacity(0.3),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      Checkbox(
+                        side: const BorderSide(
+                            color: Color.fromARGB(255, 0, 35, 65), width: 2),
+                        activeColor: Colors.blue,
+                        value: singleData.todoCompleted == true,
+                        onChanged: (value) {
+                          ref
+                              .read(todoListProvider.notifier)
+                              .toggleCompletion(singleData);
+                        },
+                      ),
                       IconButton(
                           onPressed: () {
                             showDialog(
                               context: context,
                               builder: (context) {
-                                return RestoreTaskDialog(
-                                    id: singleData.todoID!);
-                              },
-                            );
-                          },
-                          icon: const Icon(
-                            Icons.restore,
-                            color: Color.fromARGB(255, 126, 0, 0),
-                            size: 26,
-                          )),
-                      IconButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return DeleteTaskPermanentlyDialog(
-                                    id: singleData.todoID!);
+                                return DeleteTaskDialog(id: singleData.todoID!);
                               },
                             );
                           },
                           icon: const Icon(
                             Icons.delete,
-                            color: Color.fromARGB(255, 126, 0, 0),
+                            color: Color.fromARGB(255, 0, 35, 65),
                             size: 26,
-                          )),
+                          ))
                     ],
                   ),
                   title: Text(
