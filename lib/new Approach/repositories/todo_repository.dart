@@ -30,7 +30,7 @@ class TodoRepository {
       dataSource.updateCompletionStatus(id, isCompleted);
 
   //! Soft delete a todo (restorable)
-  Future<int> softDeleteTodo(int id) => dataSource.softDeleteTodo(id);
+  Future<int> softDeleteTodo(int id) => dataSource.softDeleteTheTodo(id);
 
   //! Restore a soft-deleted todo
   Future<int> restoreTodo(int id) => dataSource.restoreTodo(id);
