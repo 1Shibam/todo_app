@@ -1,3 +1,2 @@
-const String font = 'Arista';
-const String fontBold = 'Arista-Bold';
-
+const String font = 'Oxygen';
+const String fontBold = 'Oxygen-Bold';
