@@ -16,11 +16,16 @@ class TodoDataSource {
     return await database.insert('todoTable', todo.toMap());
   }
 
-  //! Get Todos List
-  Future<List<TodosModel>> getTodosList() async {
-    final maps = await database.query('todoTable');
-    return maps.map((data) => TodosModel.fromMap(data)).toList();
-  }
+  //! Get Active Todos List (Excluding Soft-Deleted)
+Future<List<TodosModel>> getTodosList() async {
+  final maps = await database.query(
+    'todoTable',
+    where: 'todoDeleted = ?',
+    whereArgs: [0], // Fetch only active todos (not soft deleted)
+  );
+  return maps.map((data) => TodosModel.fromMap(data)).toList();
+}
+
 
   //! Get Completed Todos List
 Future<List<TodosModel>> getCompletedTodosList() async {
