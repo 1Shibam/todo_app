@@ -78,4 +78,10 @@ class TodoStateNotifier extends StateNotifier<List<TodosModel>> {
     ref.read(deletedTodoListProvider.notifier).loadTemporaryDeletedTodos();
     loadTodos();
   }
+
+  Future<void> destroyAllTodo() async {
+    await ref.read(todoRepositoryProvider).permanentlyDestroyAllTodo();
+    ref.read(completedTodosListProvider.notifier).loadCompletedTodos();
+    ref.read(deletedTodoListProvider.notifier).loadTemporaryDeletedTodos();
+  }
 }
