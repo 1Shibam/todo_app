@@ -6,7 +6,6 @@ import 'package:todo_app/new%20Approach/themes/app_text_styles.dart';
 class DeleteAllTodosAlertDialog extends ConsumerWidget {
   const DeleteAllTodosAlertDialog({super.key});
 
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AlertDialog(
