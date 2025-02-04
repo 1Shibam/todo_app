@@ -104,6 +104,12 @@ flutter:
     - family: Arista-Bold
       fonts:
         - asset: assets/fonts/Arista-Pro-Alternate-Bold-trial.ttf
+    - family: Oxygen
+      fonts:
+        - asset: assets/fonts/Oxygen-Regular.ttf
+    - family: Oxygen-Bold
+      fonts:
+        - asset: assets/fonts/Oxygen-Bold.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
