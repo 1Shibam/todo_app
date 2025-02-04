@@ -18,6 +18,7 @@ class _TodoHomeScreenState extends ConsumerState<TodoHomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           centerTitle: true,
           title: Text(
@@ -35,9 +36,9 @@ class _TodoHomeScreenState extends ConsumerState<TodoHomeScreen> {
             const SizedBox(
               height: 12,
             ),
-            DefaultTabController(
-              length: 3, // Three tabs
-              child: Expanded(
+            Flexible(
+              child: DefaultTabController(
+                length: 3, // Three tabs
                 child: Column(
                   children: [
                     TabBar(
