@@ -40,6 +40,8 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
   Future<void> selectDate(
       BuildContext context, TextEditingController controller) async {
     DateTime? picked = await showDatePicker(
+      
+      
         context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime.now(),
@@ -99,17 +101,22 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
                           duration: const Duration(seconds: 1),
                         ));
                       },
-                      decoration: const InputDecoration(
-                          labelText: 'Description', hintText: 'lol lmao'),
+                      decoration: InputDecoration(
+                          labelText: 'Description',
+                          hintText: 'lol lmao',
+                          hintStyle: AppTextStyles.normal(color: Colors.grey),
+                          labelStyle: AppTextStyles.normal(color: Colors.grey)),
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
                       controller: startDateController,
                       style: AppTextStyles.normal(),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
+                        hintStyle: AppTextStyles.normal(color: Colors.grey),
+                        labelStyle: AppTextStyles.normal(color: Colors.grey),
                         labelText: 'Start Date',
                         hintText: 'Select start date',
-                        suffixIcon: Icon(Icons.calendar_today),
+                        suffixIcon: const Icon(Icons.calendar_today),
                       ),
                       readOnly: true,
                       onTap: () => selectDate(context, startDateController),
@@ -118,10 +125,12 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
                     TextFormField(
                       controller: endDateController,
                       style: AppTextStyles.normal(),
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
+                        hintStyle: AppTextStyles.normal(color: Colors.grey),
+                        labelStyle: AppTextStyles.normal(color: Colors.grey),
                         labelText: 'End Date',
                         hintText: 'Select end date',
-                        suffixIcon: Icon(Icons.calendar_today),
+                        suffixIcon: const Icon(Icons.calendar_today),
                       ),
                       readOnly: true,
                       onTap: () => selectDate(context, endDateController),
