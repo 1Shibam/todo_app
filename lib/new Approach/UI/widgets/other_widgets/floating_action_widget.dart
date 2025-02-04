@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/new%20Approach/model/todos_model.dart';
+import 'package:todo_app/new%20Approach/providers/state%20provider/todo_state.dart';
+import 'package:todo_app/new%20Approach/repositories/todo_repository.dart';
 import 'package:todo_app/new%20Approach/themes/app_text_styles.dart';
 
 class FloatingActionWidget extends ConsumerStatefulWidget {
@@ -143,31 +146,44 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
                         AppTextStyles.normal(color: Colors.black, fontSize: 12),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      // Validate form
-                      Navigator.pop(context);
+                Consumer(
+                  builder: (context, ref, child) {
+                    return ElevatedButton(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          final newTodo = TodosModel(
+                              todoTitle: titleController.text,
+                              todoDesc: descController.text,
+                              todoStartDate: startDateController.text,
+                              todoEndDate: endDateController.text);
 
-                      // Clear the fields after submitting
-                      titleController.clear();
-                      descController.clear();
-                      startDateController.clear();
-                      endDateController.clear();
+                          ref.read(todoListProvider.notifier).addTodo(newTodo);
 
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Task added to the database'),
-                          duration: Duration(seconds: 1),
-                        ),
-                      );
-                    }
+                          // Validate form
+
+                          Navigator.pop(context);
+
+                          // Clear the fields after submitting
+                          titleController.clear();
+                          descController.clear();
+                          startDateController.clear();
+                          endDateController.clear();
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Task added to the database'),
+                              duration: Duration(seconds: 1),
+                            ),
+                          );
+                        }
+                      },
+                      child: Text(
+                        'Submit',
+                        style: AppTextStyles.normal(
+                            color: Colors.black, fontSize: 12),
+                      ),
+                    );
                   },
-                  child: Text(
-                    'Submit',
-                    style:
-                        AppTextStyles.normal(color: Colors.black, fontSize: 12),
-                  ),
                 ),
               ],
             );
