@@ -39,11 +39,11 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
     DateTime? picked = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),
-        firstDate: DateTime(2000),
+        firstDate: DateTime.now(),
         lastDate: DateTime(2100));
     if (picked != null) {
       setState(() {
-        controller.text = picked.toLocal().toString().split('')[0];
+        controller.text = picked.toLocal().toString().split(' ')[0];
       });
     }
   }
@@ -129,6 +129,12 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
               actions: [
                 TextButton(
                   onPressed: () {
+                    // Clear the fields after submitting
+                    titleController.clear();
+                    descController.clear();
+                    startDateController.clear();
+                    endDateController.clear();
+
                     Navigator.pop(context); // Close the dialog without saving
                   },
                   child: Text(
@@ -142,6 +148,13 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
                     if (formKey.currentState!.validate()) {
                       // Validate form
                       Navigator.pop(context);
+
+                      // Clear the fields after submitting
+                      titleController.clear();
+                      descController.clear();
+                      startDateController.clear();
+                      endDateController.clear();
+
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('Task added to the database'),
