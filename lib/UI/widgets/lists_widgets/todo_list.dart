@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/UI/widgets/dialogs/delete_task_dialog.dart';
 import 'package:todo_app/UI/widgets/dialogs/todo_detailed_view.dart';
+import 'package:todo_app/UI/widgets/dialogs/update_task_details.dart';
 import 'package:todo_app/providers/state%20provider/todo_state.dart';
 import 'package:todo_app/themes/app_text_styles.dart';
 
@@ -46,6 +47,21 @@ class TodosList extends ConsumerWidget {
                           description: singleData.todoDesc,
                           endDate: singleData.todoEndDate,
                           startDate: singleData.todoStartDate,
+                        );
+                      },
+                    );
+                  },
+                  onLongPress: () {
+                    //! Creating TextEditingController instances with the initial values
+                   
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return UpdateTaskDetails(
+                          title: singleData.todoTitle,
+                          desc: singleData.todoDesc,
+                          endTime: singleData.todoEndDate,
+                          startTime: singleData.todoStartDate,
                         );
                       },
                     );
