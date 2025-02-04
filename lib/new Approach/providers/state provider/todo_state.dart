@@ -7,9 +7,9 @@ import 'todo_completed_state.dart';
 
 //! this is the state provider!!
 final todoListProvider =
-    StateNotifierProvider<TodoStateNotifier, List<TodosModel>>(
-  (ref) => TodoStateNotifier(ref),
-);
+    StateNotifierProvider<TodoStateNotifier, List<TodosModel>>((ref) {
+  return TodoStateNotifier(ref);
+});
 
 class TodoStateNotifier extends StateNotifier<List<TodosModel>> {
   final Ref ref;
@@ -59,7 +59,9 @@ class TodoStateNotifier extends StateNotifier<List<TodosModel>> {
     await ref.read(todoRepositoryProvider).softDeleteTodo(id);
     //trigger reload for deleted list
     print('reload of deleted list has been triggered!');
+    ref.read(completedTodosListProvider.notifier).loadCompletedTodos();
     ref.read(deletedTodoListProvider.notifier).loadTemporaryDeletedTodos();
+
     loadTodos();
   }
 
@@ -72,6 +74,8 @@ class TodoStateNotifier extends StateNotifier<List<TodosModel>> {
   //! Permanently delete a todo
   Future<void> deleteTodo(int id) async {
     await ref.read(todoRepositoryProvider).deleteTodo(id);
+    ref.read(completedTodosListProvider.notifier).loadCompletedTodos();
+    ref.read(deletedTodoListProvider.notifier).loadTemporaryDeletedTodos();
     loadTodos();
   }
 }
