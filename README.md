@@ -1,9 +1,25 @@
 # Todo App
 
 A simple and efficient Todo App built using Flutter and Riverpod for state management. This app helps users to add, delete, complete, restore, and permanently delete tasks, ensuring a smooth task management experience.
+### Screenshots
 
-## Features
+<img src="https://github.com/user-attachments/assets/8d5b5fa1-cbdf-4969-9455-efbdc3d9909b" width="200">
+<img src="https://github.com/user-attachments/assets/79db4639-5f51-496b-bf17-9cd4a656e224" width="200">
+<img src="https://github.com/user-attachments/assets/2c16ce92-dcd2-43c4-9c7f-1d8494889a00" width="200">
+<img src="https://github.com/user-attachments/assets/7f29eb67-1023-4018-ace2-b3ff40d45870" width="200">
+<img src="https://github.com/user-attachments/assets/dd26195b-9bd2-460e-8241-09ee67a5a580" width="200">
+<img src="https://github.com/user-attachments/assets/e70075bf-ac58-4669-b0db-ef006bde587b" width="200">
+<img src="https://github.com/user-attachments/assets/07332261-c959-4fd1-adb6-0286b4d3ba04" width="200">
+<img src="https://github.com/user-attachments/assets/0f5fc58f-bdbe-45a3-919c-4cdd80a2f67d" width="200">
+<img src="https://github.com/user-attachments/assets/bf044573-48f7-4fe5-8d58-8b4fb6ea0576" width="200">
+<img src="https://github.com/user-attachments/assets/879a71ca-fdc6-43a5-92c4-243e7111fcc0" width="200">
+<img src="https://github.com/user-attachments/assets/1913c967-ad59-41b5-a8ef-29e1f5826201" width="200">
 
+
+
+### Features
+
+- **Daily Advice:** Gives a new advice everyday using advice api.
 - **Add Task:** Easily add new tasks with a title and description.
 - **Delete Task:** Move tasks to the deleted list instead of removing them permanently.
 - **Complete Task:** Mark tasks as completed to track progress.
@@ -64,19 +80,7 @@ A simple and efficient Todo App built using Flutter and Riverpod for state manag
 
 Feel free to contribute by opening an issue or submitting a pull request.
 
-### Screenshots
 
-<img src="https://github.com/user-attachments/assets/8d5b5fa1-cbdf-4969-9455-efbdc3d9909b" width="200">
-<img src="https://github.com/user-attachments/assets/79db4639-5f51-496b-bf17-9cd4a656e224" width="200">
-<img src="https://github.com/user-attachments/assets/2c16ce92-dcd2-43c4-9c7f-1d8494889a00" width="200">
-<img src="https://github.com/user-attachments/assets/7f29eb67-1023-4018-ace2-b3ff40d45870" width="200">
-<img src="https://github.com/user-attachments/assets/dd26195b-9bd2-460e-8241-09ee67a5a580" width="200">
-<img src="https://github.com/user-attachments/assets/e70075bf-ac58-4669-b0db-ef006bde587b" width="200">
-<img src="https://github.com/user-attachments/assets/07332261-c959-4fd1-adb6-0286b4d3ba04" width="200">
-<img src="https://github.com/user-attachments/assets/0f5fc58f-bdbe-45a3-919c-4cdd80a2f67d" width="200">
-<img src="https://github.com/user-attachments/assets/bf044573-48f7-4fe5-8d58-8b4fb6ea0576" width="200">
-<img src="https://github.com/user-attachments/assets/879a71ca-fdc6-43a5-92c4-243e7111fcc0" width="200">
-<img src="https://github.com/user-attachments/assets/1913c967-ad59-41b5-a8ef-29e1f5826201" width="200">
 
 
 
