@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:todo_app/new%20Approach/database/database_provider.dart';
@@ -17,7 +19,9 @@ class TodoDataSource {
 
   //! Get Todos List
   Future<List<TodosModel>> getTodosList() async {
-    final maps = await database.query('todoTable');
+    print('getting the todo list!');
+    final maps = await database
+        .query('todoTable', where: 'todoDeleted = ?', whereArgs: [0]);
     return maps.map((data) => TodosModel.fromMap(data)).toList();
   }
 
@@ -25,7 +29,7 @@ class TodoDataSource {
   Future<List<TodosModel>> getCompletedTodosList() async {
     final maps = await database.query(
       'todoTable',
-      where: 'completed = ?',
+      where: 'todoCompleted = ?',
       whereArgs: [1], // Assuming '1' represents completed todos
     );
     return maps.map((data) => TodosModel.fromMap(data)).toList();
@@ -33,9 +37,10 @@ class TodoDataSource {
 
 //! Get Soft Deleted Todos List
   Future<List<TodosModel>> getSoftDeletedTodosList() async {
+    print('this is running burh!!');
     final maps = await database.query(
       'todoTable',
-      where: 'softDeleted = ?',
+      where: 'todoDeleted = ?',
       whereArgs: [1], // Assuming '1' represents soft deleted todos
     );
     return maps.map((data) => TodosModel.fromMap(data)).toList();
@@ -67,7 +72,8 @@ class TodoDataSource {
   }
 
   //! Soft Delete Todo (Restorable)
-  Future<int> softDeleteTodo(int id) async {
+  Future<int> softDeleteTheTodo(int id) async {
+    print('i tried deleting');
     return await database.update('todoTable', {'todoDeleted': 1},
         where: 'todoID = ?', whereArgs: [id]);
   }
@@ -89,7 +95,10 @@ final todoDataSourceProvider = Provider<TodoDataSource>((ref) {
   final databaseAsync = ref.watch(databaseProvider);
 
   return databaseAsync.when(
-    data: (data) => TodoDataSource(data),
+    data: (data) {
+      print('everything is right here!!');
+      return TodoDataSource(data);
+    },
     error: (err, stackTrace) => throw Exception('Error loading database: $err'),
     loading: () => throw Exception('Database still loading!'),
   );
