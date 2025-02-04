@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/UI/widgets/other_widgets/congratulatory_message.dart';
 
 import 'package:todo_app/providers/state%20provider/todo_completed_state.dart';
 
@@ -34,14 +35,17 @@ class CompletedTodosList extends ConsumerWidget {
             itemBuilder: (context, index) {
               final singleData = todoData[index];
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
                 child: ListTile(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
                   tileColor: Colors.green.withOpacity(0.3),
                   trailing: const Row(
                     mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      CongratulatoryMessage(),
                       Icon(
                         Icons.check,
                         color: Colors.green,
