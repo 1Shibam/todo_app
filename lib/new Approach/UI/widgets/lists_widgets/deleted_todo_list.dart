@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/new%20Approach/UI/widgets/dialogs/delete_task_permanently_dialog.dart';
 import 'package:todo_app/new%20Approach/UI/widgets/dialogs/restore_task_dialog.dart';
 import 'package:todo_app/new%20Approach/providers/state%20provider/todo_deleted_state.dart';
 
@@ -53,9 +54,24 @@ class DeletedTodosList extends ConsumerWidget {
                           },
                           icon: const Icon(
                             Icons.restore,
-                            color: Color.fromARGB(255, 0, 35, 65),
+                            color: Color.fromARGB(255, 126, 0, 0),
                             size: 26,
-                          ))
+                          )),
+                      IconButton(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return DeleteTaskPermanentlyDialog(
+                                    id: singleData.todoID!);
+                              },
+                            );
+                          },
+                          icon: const Icon(
+                            Icons.delete,
+                            color: Color.fromARGB(255, 126, 0, 0),
+                            size: 26,
+                          )),
                     ],
                   ),
                   title: Text(
