@@ -4,16 +4,11 @@ import 'package:todo_app/new%20Approach/providers/state%20provider/todo_state.da
 import 'package:todo_app/new%20Approach/themes/app_text_styles.dart';
 
 class DeleteTaskDialog extends ConsumerWidget {
-  const DeleteTaskDialog({
-    super.key,
-
-  });
-
-
+  const DeleteTaskDialog({super.key, required this.id});
+  final int id;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
     return AlertDialog(
       title: Text('Delete Task!?', style: AppTextStyles.bold()),
       content: RichText(
@@ -22,7 +17,7 @@ class DeleteTaskDialog extends ConsumerWidget {
               style: AppTextStyles.normal(),
               children: [
             TextSpan(
-                text: '${task['title'].toString().split(' ').first}...',
+                text: '.',
                 style: AppTextStyles.normal(color: Colors.red).copyWith(
                     decoration: TextDecoration.underline,
                     decorationThickness: 3))
@@ -35,7 +30,7 @@ class DeleteTaskDialog extends ConsumerWidget {
             child: Text('Cancel', style: AppTextStyles.normal())),
         TextButton(
             onPressed: () {
-              ref.read(todoListProvider.notifier).tempDeleteTodo(id)
+              ref.read(todoListProvider.notifier).tempDeleteTodo(id);
               Navigator.pop(context);
             },
             child: Container(
