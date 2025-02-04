@@ -37,6 +37,9 @@ class TodoRepository {
 
   //! Permanently delete a todo
   Future<int> deleteTodo(int id) => dataSource.deleteTheTodo(id);
+
+  //! Permanently delete all todo
+  Future<void> permanentlyDestroyAllTodo() => dataSource.permanentDeleteAllTodo();
 }
 
 final todoRepositoryProvider = Provider<TodoRepository>((ref) {
