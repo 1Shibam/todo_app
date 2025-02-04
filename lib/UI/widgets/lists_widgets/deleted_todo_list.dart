@@ -35,48 +35,51 @@ class DeletedTodosList extends ConsumerWidget {
               final singleData = todoData[index];
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ListTile(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                  tileColor: Colors.red.withOpacity(0.3),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return RestoreTaskDialog(
-                                    id: singleData.todoID!);
-                              },
-                            );
-                          },
-                          icon: const Icon(
-                            Icons.restore,
-                            color: Color.fromARGB(255, 126, 0, 0),
-                            size: 26,
-                          )),
-                      IconButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return DeleteTaskPermanentlyDialog(
-                                    id: singleData.todoID!);
-                              },
-                            );
-                          },
-                          icon: const Icon(
-                            Icons.delete,
-                            color: Color.fromARGB(255, 126, 0, 0),
-                            size: 26,
-                          )),
-                    ],
-                  ),
-                  title: Text(
-                    singleData.todoTitle,
-                    style: AppTextStyles.bold(fontSize: 20),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                    tileColor: Colors.red.withOpacity(0.3),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return RestoreTaskDialog(
+                                      id: singleData.todoID!);
+                                },
+                              );
+                            },
+                            icon: const Icon(
+                              Icons.restore,
+                              color: Color.fromARGB(255, 126, 0, 0),
+                              size: 26,
+                            )),
+                        IconButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return DeleteTaskPermanentlyDialog(
+                                      id: singleData.todoID!);
+                                },
+                              );
+                            },
+                            icon: const Icon(
+                              Icons.delete,
+                              color: Color.fromARGB(255, 126, 0, 0),
+                              size: 26,
+                            )),
+                      ],
+                    ),
+                    title: Text(
+                      singleData.todoTitle,
+                      style: AppTextStyles.bold(fontSize: 20),
+                    ),
                   ),
                 ),
               );
