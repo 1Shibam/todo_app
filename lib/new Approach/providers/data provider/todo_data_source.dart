@@ -74,8 +74,14 @@ class TodoDataSource {
   //! Soft Delete Todo (Restorable)
   Future<int> softDeleteTheTodo(int id) async {
     print('i tried deleting');
-    return await database.update('todoTable', {'todoDeleted': 1},
-        where: 'todoID = ?', whereArgs: [id]);
+    return await database.update(
+        'todoTable',
+        {
+          'todoDeleted': 1,
+          'todoCompleted': 0,
+        },
+        where: 'todoID = ?',
+        whereArgs: [id]);
   }
 
   //! Restore Soft-Deleted Todo
@@ -85,9 +91,15 @@ class TodoDataSource {
   }
 
   //! Permanent Delete Todo
-  Future<int> deleteTodo(int id) async {
+  Future<int> deleteTheTodo(int id) async {
     return await database
         .delete('todoTable', where: 'todoID = ?', whereArgs: [id]);
+  }
+
+  //! Permanent delete all todos
+  Future<int> permanentDeleteAllTodo() async {
+    return await database
+        .delete('todoTable', where: 'todoDeleted = ?', whereArgs: [1]);
   }
 }
 
