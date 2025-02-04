@@ -11,17 +11,10 @@ class DeleteTaskDialog extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return AlertDialog(
       title: Text('Delete Task!?', style: AppTextStyles.bold()),
-      content: RichText(
-          text: TextSpan(
-              text: 'Are you sure you want to Delete ',
-              style: AppTextStyles.normal(),
-              children: [
-            TextSpan(
-                text: '.',
-                style: AppTextStyles.normal(color: Colors.red).copyWith(
-                    decoration: TextDecoration.underline,
-                    decorationThickness: 3))
-          ])),
+      content: Text(
+        'Are you sure you want to move this to recycle bin!!?',
+        style: AppTextStyles.normal(color: Colors.red),
+      ),
       actions: [
         TextButton(
             onPressed: () {
