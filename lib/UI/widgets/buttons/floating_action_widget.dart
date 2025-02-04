@@ -40,8 +40,6 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
   Future<void> selectDate(
       BuildContext context, TextEditingController controller) async {
     DateTime? picked = await showDatePicker(
-      
-      
         context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime.now(),
@@ -90,6 +88,9 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
                       height: 16,
                     ),
                     TextFormField(
+                      maxLines:
+                          3, // Allow the description to take up multiple lines
+                      keyboardType: TextInputType.multiline,
                       controller: descController,
                       focusNode: descFocusNode,
                       style: AppTextStyles.normal(),
@@ -102,6 +103,7 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
                         ));
                       },
                       decoration: InputDecoration(
+                          alignLabelWithHint: true,
                           labelText: 'Description',
                           hintText: 'lol lmao',
                           hintStyle: AppTextStyles.normal(color: Colors.grey),
