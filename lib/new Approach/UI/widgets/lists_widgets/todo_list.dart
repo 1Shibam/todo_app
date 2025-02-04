@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/new%20Approach/UI/widgets/dialogs/delete_task_dialog.dart';
 import 'package:todo_app/new%20Approach/providers/state%20provider/todo_state.dart';
 import 'package:todo_app/new%20Approach/themes/app_text_styles.dart';
 
@@ -53,7 +54,14 @@ class TodosList extends ConsumerWidget {
                         },
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return DeleteTaskDialog(id: singleData.todoID!);
+                              },
+                            );
+                          },
                           icon: const Icon(
                             Icons.delete,
                             color: Color.fromARGB(255, 0, 35, 65),
