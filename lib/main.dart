@@ -9,6 +9,7 @@ import 'themes/app_text_styles.dart';
 void main(ref) async {
   WidgetsFlutterBinding.ensureInitialized();
   debugPaintSizeEnabled = false;
+  //! is finished and working fantastic
   runApp(const ProviderScope(child: TodoApp()));
 }
 
