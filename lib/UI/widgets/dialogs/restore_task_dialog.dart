@@ -32,12 +32,20 @@ class RestoreTaskDialog extends ConsumerWidget {
             onPressed: () {
               ref.read(todoListProvider.notifier).restoreTodo(id);
               Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(
+                  'Task restored Successfully!!',
+                  style: AppTextStyles.normal(),
+                ),
+                duration: const Duration(seconds: 2),
+                backgroundColor: Colors.green,
+              ));
             },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
                   color: Colors.green, borderRadius: BorderRadius.circular(4)),
-              child: Text('Delete', style: AppTextStyles.normal()),
+              child: Text('Restore', style: AppTextStyles.normal()),
             ))
       ],
     );
