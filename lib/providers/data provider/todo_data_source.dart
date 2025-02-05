@@ -19,7 +19,7 @@ class TodoDataSource {
 
   //! Get Todos List
   Future<List<TodosModel>> getTodosList() async {
-    print('getting the todo list!');
+    // print('getting the todo list!');
     final maps = await database
         .query('todoTable', where: 'todoDeleted = ?', whereArgs: [0]);
     return maps.map((data) => TodosModel.fromMap(data)).toList();
@@ -30,31 +30,31 @@ class TodoDataSource {
     final maps = await database.query(
       'todoTable',
       where: 'todoCompleted = ?',
-      whereArgs: [1], // Assuming '1' represents completed todos
+      whereArgs: [1], // 1 is for true as sqlite doesnt support boolean values!
     );
     return maps.map((data) => TodosModel.fromMap(data)).toList();
   }
 
 //! Get Soft Deleted Todos List
   Future<List<TodosModel>> getSoftDeletedTodosList() async {
-    print('this is running burh!!');
+    // print('this is running burh!!');
     final maps = await database.query(
       'todoTable',
       where: 'todoDeleted = ?',
-      whereArgs: [1], // Assuming '1' represents soft deleted todos
+      whereArgs: [1], 
     );
     return maps.map((data) => TodosModel.fromMap(data)).toList();
   }
 
   //! Update Todo Details
-  Future<int> updateTodo(TodosModel todo) async {
+  Future<int> updateTheTodo(TodosModel todo) async {
     return await database.update(
       'todoTable',
       {
         'todoTitle': todo.todoTitle,
-        'todoDescription': todo.todoDesc,
-        'startTime': todo.todoStartDate,
-        'endTime': todo.todoEndDate,
+        'todoDesc': todo.todoDesc,
+        'todoStartDate': todo.todoStartDate,
+        'todoEndDate': todo.todoEndDate,
       },
       where: 'todoID = ?',
       whereArgs: [todo.todoID],
@@ -108,7 +108,7 @@ final todoDataSourceProvider = Provider<TodoDataSource>((ref) {
 
   return databaseAsync.when(
     data: (data) {
-      print('everything is right here!!');
+      //? print('everything is right here!!');
       return TodoDataSource(data);
     },
     error: (err, stackTrace) => throw Exception('Error loading database: $err'),
