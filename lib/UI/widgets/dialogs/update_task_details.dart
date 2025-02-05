@@ -6,6 +6,7 @@ import 'package:todo_app/providers/state%20provider/todo_state.dart';
 import '../../../themes/themes_export.dart';
 
 class UpdateTaskDetails extends ConsumerWidget {
+  final int id;
   final String title;
   final String? desc;
   final String? startTime;
@@ -13,6 +14,7 @@ class UpdateTaskDetails extends ConsumerWidget {
 
   const UpdateTaskDetails({
     super.key,
+    required this.id,
     required this.title,
     this.desc,
     this.startTime,
@@ -52,58 +54,61 @@ class UpdateTaskDetails extends ConsumerWidget {
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: formKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextFormField(
-                style: AppTextStyles.normal(),
-                controller: titleController,
-                decoration: const InputDecoration(labelText: 'Title'),
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return 'Title cannot be empty';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                style: AppTextStyles.normal(),
-                maxLines: 3, // Allow the description to take up multiple lines
-                keyboardType: TextInputType.multiline,
-
-                controller: descController,
-                decoration: InputDecoration(
-                  labelText: 'Description',
-                  alignLabelWithHint: true,
-                  hintStyle: AppTextStyles.normal(color: Colors.grey),
-                  labelStyle: AppTextStyles.normal(color: Colors.grey),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextFormField(
+                  style: AppTextStyles.normal(),
+                  controller: titleController,
+                  decoration: const InputDecoration(labelText: 'Title'),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Title cannot be empty';
+                    }
+                    return null;
+                  },
                 ),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                style: AppTextStyles.normal(),
-                controller: startDateController,
-                decoration: InputDecoration(
+                const SizedBox(height: 16),
+                TextFormField(
+                  style: AppTextStyles.normal(),
+                  maxLines:
+                      3, // Allow the description to take up multiple lines
+                  keyboardType: TextInputType.multiline,
+
+                  controller: descController,
+                  decoration: InputDecoration(
+                    labelText: 'Description',
                     alignLabelWithHint: true,
                     hintStyle: AppTextStyles.normal(color: Colors.grey),
                     labelStyle: AppTextStyles.normal(color: Colors.grey),
-                    labelText: 'Start Date',
-                    suffixIcon: const Icon(Icons.calendar_today)),
-                readOnly: true,
-                onTap: () => selectDate(context, startDateController),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                style: AppTextStyles.normal(),
-                controller: endDateController,
-                decoration: const InputDecoration(
-                    labelText: 'End Date',
-                    suffixIcon: Icon(Icons.calendar_today)),
-                readOnly: true,
-                onTap: () => selectDate(context, endDateController),
-              ),
-            ],
+                  ),
+                ),
+                const SizedBox(height: 16),
+                TextFormField(
+                  style: AppTextStyles.normal(),
+                  controller: startDateController,
+                  decoration: InputDecoration(
+                      alignLabelWithHint: true,
+                      hintStyle: AppTextStyles.normal(color: Colors.grey),
+                      labelStyle: AppTextStyles.normal(color: Colors.grey),
+                      labelText: 'Start Date',
+                      suffixIcon: const Icon(Icons.calendar_today)),
+                  readOnly: true,
+                  onTap: () => selectDate(context, startDateController),
+                ),
+                const SizedBox(height: 16),
+                TextFormField(
+                  style: AppTextStyles.normal(),
+                  controller: endDateController,
+                  decoration: const InputDecoration(
+                      labelText: 'End Date',
+                      suffixIcon: Icon(Icons.calendar_today)),
+                  readOnly: true,
+                  onTap: () => selectDate(context, endDateController),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -112,13 +117,19 @@ class UpdateTaskDetails extends ConsumerWidget {
           onPressed: () {
             if (formKey.currentState?.validate() ?? false) {
               final updatedTask = TodosModel(
+                todoID: id,
                 todoTitle: titleController.text,
                 todoDesc: descController.text,
                 todoStartDate: startDateController.text,
                 todoEndDate: endDateController.text,
               );
               ref.read(todoListProvider.notifier).updateTodo(updatedTask);
-              Navigator.of(context).pop(); // Close the dialog after saving
+              Navigator.of(context).pop();
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('Task updated Successfully!!', style: AppTextStyles.normal(),),
+                duration: const Duration(seconds: 2),
+                backgroundColor: Colors.lightBlue,
+              ));
             }
           },
           child: const Text('Save Changes'),
