@@ -181,9 +181,13 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
                           endDateController.clear();
 
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Task added to the database'),
-                              duration: Duration(seconds: 1),
+                            SnackBar(
+                              content: Text(
+                                'Task added to the database',
+                                style: AppTextStyles.normal(),
+                              ),
+                              duration: const Duration(seconds: 2),
+                              backgroundColor: Colors.lightBlue,
                             ),
                           );
                         }
