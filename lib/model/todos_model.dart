@@ -37,7 +37,7 @@ class TodosModel {
     return {
       'todoID': todoID,
       'todoTitle': todoTitle,
-      'todoDesc': todoDesc,
+      'todoDesc': todoDesc ,
       'todoStartDate': todoStartDate,
       'todoEndDate': todoEndDate,
       'todoCompleted': todoCompleted ? 1 : 0,
