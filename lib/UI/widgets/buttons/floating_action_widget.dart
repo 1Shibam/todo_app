@@ -23,6 +23,7 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
   //! focus nodes for text form fields
   final FocusNode titleFocusNode = FocusNode();
   final FocusNode descFocusNode = FocusNode();
+
   final formKey = GlobalKey<FormState>(); //! form key for validation..
 
   @override
@@ -32,6 +33,9 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
     descController.dispose();
     startDateController.dispose();
     endDateController.dispose();
+    titleFocusNode.dispose();
+    descFocusNode.dispose();
+
     super.dispose();
   }
 
@@ -74,7 +78,9 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
                       controller: titleController,
                       focusNode: titleFocusNode,
                       autofocus: true,
-                      onFieldSubmitted: (value) {},
+                      onFieldSubmitted: (value) {
+                        FocusScope.of(context).requestFocus(descFocusNode);
+                      },
                       decoration: const InputDecoration(
                           labelText: 'Title', hintText: 'eg. cry more'),
                       validator: (value) {
@@ -95,13 +101,7 @@ class _FloatingActionWidgetState extends ConsumerState<FloatingActionWidget> {
                       focusNode: descFocusNode,
                       style: AppTextStyles.normal(),
                       autofocus: true,
-                      onFieldSubmitted: (value) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text('Task added to list',
-                              style: AppTextStyles.normal(color: Colors.white)),
-                          duration: const Duration(seconds: 1),
-                        ));
-                      },
+
                       decoration: InputDecoration(
                           alignLabelWithHint: true,
                           labelText: 'Description',
