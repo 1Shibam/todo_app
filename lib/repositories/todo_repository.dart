@@ -23,7 +23,7 @@ class TodoRepository {
   Future<int> insertTodo(TodosModel todo) => dataSource.createTodo(todo);
 
   //! Update an existing todo
-  Future<int> updateTodo(TodosModel todo) => dataSource.updateTodo(todo);
+  Future<int> updateTodo(TodosModel todo) => dataSource.updateTheTodo(todo);
 
   //! Toggle completion status
   Future<int> toggleCompletion(int id, bool isCompleted) =>
@@ -39,7 +39,8 @@ class TodoRepository {
   Future<int> deleteTodo(int id) => dataSource.deleteTheTodo(id);
 
   //! Permanently delete all todo
-  Future<void> permanentlyDestroyAllTodo() => dataSource.permanentDeleteAllTodo();
+  Future<void> permanentlyDestroyAllTodo() =>
+      dataSource.permanentDeleteAllTodo();
 }
 
 final todoRepositoryProvider = Provider<TodoRepository>((ref) {
