@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/providers/state%20provider/todo_deleted_state.dart';
 import 'package:todo_app/providers/state%20provider/todo_state.dart';
 import 'package:todo_app/themes/app_text_styles.dart';
 
@@ -11,7 +12,10 @@ class DeleteTaskPermanentlyDialog extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return AlertDialog(
       title: Text('Delete Task!?', style: AppTextStyles.bold()),
-      content: Text('Are you sure you want to delete this task permanently!?', style: AppTextStyles.normal(color: Colors.red),),
+      content: Text(
+        'Are you sure you want to delete this task permanently!?',
+        style: AppTextStyles.normal(color: Colors.red),
+      ),
       actions: [
         TextButton(
             onPressed: () {
@@ -21,7 +25,18 @@ class DeleteTaskPermanentlyDialog extends ConsumerWidget {
         TextButton(
             onPressed: () {
               ref.read(todoListProvider.notifier).deleteTodo(id);
+              ref
+                  .read(deletedTodoListProvider.notifier)
+                  .loadTemporaryDeletedTodos();
               Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(
+                  'Task Deleted Permanently!!',
+                  style: AppTextStyles.normal(),
+                ),
+                duration: const Duration(seconds: 2),
+                backgroundColor: Colors.red,
+              ));
             },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
