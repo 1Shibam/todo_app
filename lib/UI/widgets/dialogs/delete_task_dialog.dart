@@ -25,6 +25,14 @@ class DeleteTaskDialog extends ConsumerWidget {
             onPressed: () {
               ref.read(todoListProvider.notifier).tempDeleteTodo(id);
               Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(
+                  'Task Moved to Recycle Bin!!',
+                  style: AppTextStyles.normal(),
+                ),
+                duration: const Duration(seconds: 2),
+                backgroundColor: Colors.red.withOpacity(0.4),
+              ));
             },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
