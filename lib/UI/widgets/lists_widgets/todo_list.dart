@@ -58,6 +58,7 @@ class TodosList extends ConsumerWidget {
                       context: context,
                       builder: (context) {
                         return UpdateTaskDetails(
+                          id: singleData.todoID!,
                           title: singleData.todoTitle,
                           desc: singleData.todoDesc,
                           endTime: singleData.todoEndDate,
