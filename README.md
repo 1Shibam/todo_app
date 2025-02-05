@@ -3,28 +3,38 @@
 A simple and efficient Todo App built using Flutter and Riverpod for state management. This app helps users to add, delete, complete, restore, and permanently delete tasks, ensuring a smooth task management experience.
 ### Screenshots
 
-<img src="https://github.com/user-attachments/assets/8d5b5fa1-cbdf-4969-9455-efbdc3d9909b" width="200">
-<img src="https://github.com/user-attachments/assets/79db4639-5f51-496b-bf17-9cd4a656e224" width="200">
-<img src="https://github.com/user-attachments/assets/2c16ce92-dcd2-43c4-9c7f-1d8494889a00" width="200">
-<img src="https://github.com/user-attachments/assets/7f29eb67-1023-4018-ace2-b3ff40d45870" width="200">
-<img src="https://github.com/user-attachments/assets/dd26195b-9bd2-460e-8241-09ee67a5a580" width="200">
-<img src="https://github.com/user-attachments/assets/e70075bf-ac58-4669-b0db-ef006bde587b" width="200">
-<img src="https://github.com/user-attachments/assets/07332261-c959-4fd1-adb6-0286b4d3ba04" width="200">
-<img src="https://github.com/user-attachments/assets/0f5fc58f-bdbe-45a3-919c-4cdd80a2f67d" width="200">
-<img src="https://github.com/user-attachments/assets/bf044573-48f7-4fe5-8d58-8b4fb6ea0576" width="200">
-<img src="https://github.com/user-attachments/assets/879a71ca-fdc6-43a5-92c4-243e7111fcc0" width="200">
-<img src="https://github.com/user-attachments/assets/1913c967-ad59-41b5-a8ef-29e1f5826201" width="200">
+<img src="https://github.com/user-attachments/assets/afc776e1-a257-4c1d-9821-e4447b1198f5" width="200">
+<img src="https://github.com/user-attachments/assets/7190553a-2779-46a0-8d9a-78685395b145" width="200">
+<img src="https://github.com/user-attachments/assets/c32f2a64-07bf-4f18-bc03-d152b037f7d9" width="200">
+<img src="https://github.com/user-attachments/assets/01331e42-8456-44e8-a679-385396e92e40" width="200">
+<img src="https://github.com/user-attachments/assets/8623a7be-bfc4-4510-a8c9-6c581736c71d" width="200">
+<img src="https://github.com/user-attachments/assets/d265c827-537f-4774-a652-28cc3d060eb6" width="200">
+<img src="https://github.com/user-attachments/assets/352e315f-1ae0-452d-a378-da8e9c6c5d5c" width="200">
+<img src="https://github.com/user-attachments/assets/71feba09-d133-418a-99ac-fe188e799658" width="200">
+<img src="https://github.com/user-attachments/assets/3a8162bc-b08f-4223-bc2e-0e7cf45fa686" width="200">
+<img src="https://github.com/user-attachments/assets/53990e44-95b8-4054-8707-c5399df79d94" width="200">
+<img src="https://github.com/user-attachments/assets/afd7b5a8-66c2-4b05-b289-d11135f9cbed" width="200">
+<img src="https://github.com/user-attachments/assets/61401349-6edd-4cd0-bde0-879450008843" width="200">
+<img src="https://github.com/user-attachments/assets/1d837210-78bb-475f-9b6a-6d0d69a364a4" width="200">
+<img src="https://github.com/user-attachments/assets/342c300a-36e6-4a37-929d-dfd4643bca1e" width="200">
+<img src="https://github.com/user-attachments/assets/da725a33-78c7-4546-96c2-1f66b94bc48d" width="200">
+<img src="https://github.com/user-attachments/assets/4d66c66f-45c3-4496-ae2a-450a7a15b085" width="200">
 
 
 
-### Features
 
-- **Daily Advice:** Gives a new advice everyday using advice api.
-- **Add Task:** Easily add new tasks with a title and description.
-- **Delete Task:** Move tasks to the deleted list instead of removing them permanently.
-- **Complete Task:** Mark tasks as completed to track progress.
-- **Restore Task:** Bring back deleted tasks if needed.
-- **Delete Permanently:** Remove tasks permanently from the database.
+
+
+## Features  
+
+- **Daily Advice:** Get a fresh piece of advice every day using the Advice API to stay motivated.  
+- **Add Task:** Quickly create tasks with a title and optional description.  
+- **Soft Delete:** Move tasks to the deleted list instead of permanently removing them.  
+- **Mark as Complete:** Keep track of progress by marking tasks as completed.  
+- **Restore Task:** Recover deleted tasks anytime if needed.  
+- **Permanently Delete:** Erase tasks from the database forever when no longer needed.  
+
+Stay productive and never lose track of your tasks! 🚀  
 
 ## Technologies Used
 
